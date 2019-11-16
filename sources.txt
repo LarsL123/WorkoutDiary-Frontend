@@ -1,0 +1,14 @@
+Bootstrap formatting: https://getbootstrap.com/docs/4.3/content/tables/#bordered-table
+Pro-component Bootstrap: https://mdbootstrap.com/docs/jquery/tables/editable/
+    ??                 :https://mdbootstrap.com/plugins/jquery/table-editor/
+
+Call ajax on change:
+    Basic input events: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event <--- Notice the second example
+    I think this is perfect! Read!! https://www.taniarascia.com/content-editable-elements-in-javascript-react/
+
+Open source data visualization:
+    Victore libary, made for React: https://formidable.com/open-source/victory/gallery/
+
+
+
+
