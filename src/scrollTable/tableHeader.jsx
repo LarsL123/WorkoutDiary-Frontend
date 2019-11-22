@@ -1,29 +1,22 @@
 import React from "react";
-
-// const raiseSort = (path, sortColumn, onSort) => {
-//   if (sortColumn.path === path) {
-//     sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
-//   } else {
-//     sortColumn.path = path;
-//     sortColumn.order = "asc";
-//   }
-//   onSort(sortColumn);
-// };
+import styles from "./customTable.module.css";
 
 const TableHeader = props => {
-  const {  columns } = props;
+  const { columns } = props;
   return (
     <thead>
       <tr>
         {columns
           ? columns.map(column => (
               <th
-                className="clickable"
+                className={styles.th}
+                style={{
+                  top: -1
+                }}
                 key={column.path || column.key}
-               // onClick={() => raiseSort(column.path, sortColumn, onSort)}
                 scope="col"
               >
-                {column.label} 
+                {column.label}
               </th>
             ))
           : null}

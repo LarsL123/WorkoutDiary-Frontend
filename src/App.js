@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import MoviesTable from "./scrollTable/moviesTable";
+import InputTable from "./scrollTable/inputTable";
 
 function App() {
   return (
     <div className="App">
-      <MoviesTable></MoviesTable>
+      <div>
+        <InputTable></InputTable>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import styles from "./customTable.module.css";
 
 const renderCell = (item, column) => {
   if (column.content) {
@@ -14,14 +15,18 @@ const createKey = (item, column) => {
 };
 
 const TableBody = props => {
-  const { data, columns } = props;
+  const { data, columns, widths } = props;
   return (
     <tbody>
       {columns
         ? data.map(item => (
             <tr key={item._id}>
-              {columns.map(column => (
-                <td key={createKey(item, column)}>
+              {columns.map((column, index) => (
+                <td
+                  key={createKey(item, column)}
+                  className={styles.td}
+                  style={{ width: widths[index] }}
+                >
                   {renderCell(item, column)}
                 </td>
               ))}
