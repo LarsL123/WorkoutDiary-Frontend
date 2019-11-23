@@ -25,7 +25,8 @@ const TableBody = props => {
                 <td
                   key={createKey(item, column)}
                   className={styles.td}
-                  style={{ width: widths[index] }}
+                  style={{ width: widths[index], maxWidth: "100px" }}
+                  contentEditable={true}
                 >
                   {renderCell(item, column)}
                 </td>

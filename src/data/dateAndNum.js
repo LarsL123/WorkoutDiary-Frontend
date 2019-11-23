@@ -4,7 +4,7 @@ class DateAndNum {
     this.num = num;
   }
   // Takes the String from the server
-  //   constructor(date, num) {
+  //   constructor(string) {
   //     this.date = date;
   //     this.num = num;
   //   }

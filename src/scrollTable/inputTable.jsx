@@ -1,8 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
+import { getRows } from "../services/rawData.js";
+
+const useFetch = url => {
+  const [data, updateData] = useState(undefined);
+
+  // empty array as second argument equivalent to componentDidMount
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getRows(url);
+
+      updateData(response);
+    }
+    fetchData();
+  }, [url]);
+
+  return data;
+}; //Fetching hook. Placeholder before implementing the real fetching hooks
 
 const InputTable = props => {
   const [columns, setColumns] = useState(null);
+  const [height, setHeight] = useState(0);
+  const response = useFetch(0) || [];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHeight(window.scrollY);
+      console.log(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, true);
+    return () => {
+      window.removeEventListener("scroll", handleScroll); //Confirm that it removes
+    };
+  }, []);
 
   //Create columns:
   useEffect(() => {
@@ -10,12 +41,12 @@ const InputTable = props => {
       { path: "date", label: "Date" },
       { path: "day", label: "Day" },
       { path: "description", label: "Description" },
-      { path: "activity", label: "Activity" },
-      { path: "zone1", label: "1" },
-      { path: "zone2", label: "2" },
-      { path: "zone3", label: "3" },
-      { path: "zone4", label: "4" },
-      { path: "zone5", label: "5" }
+      { path: "type", label: "Activity" },
+      { path: "zones.1", label: "1" },
+      { path: "zones.2", label: "2" },
+      { path: "zones.3", label: "3" },
+      { path: "zones.4", label: "4" },
+      { path: "zones.5", label: "5" }
     ];
 
     // const deleteColumn = {
@@ -37,67 +68,13 @@ const InputTable = props => {
     setColumns(newColumns);
   }, []);
 
-  //const { data  } = props;
-  const obj = {
-    //test object
-    date: "05-6-2019",
-    day: "mon",
-    description: "There may be alot of text hereasd aasdas d asd asdasd asdada",
-    activity: (
-      <select className="custom-select">
-        <option value="Orientering">orientering</option>
-        <option value="Løping">løping</option>
-        <option value="Ski">ski</option>
-        <option value="Styrke">styrke</option>
-      </select>
-    ),
-    zone1: "123",
-    zone2: "123",
-    zone3: "123",
-    zone4: "123",
-    zone5: "123",
-    width: {
-      date: 10,
-      day: 10,
-      description: 10,
-      activity: 10,
-      zone1: 10,
-      zone2: 10,
-      zone3: 10,
-      zone4: 10,
-      zone5: 10
-    }
-  };
-  const data = [
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj,
-    obj
-  ];
-
-  const widths = ["10%", "5%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"];
-
-  return <Table columns={columns} data={data} widths={widths} />;
+  return (
+    <Table
+      columns={columns}
+      data={response}
+      widths={["10%", "5%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
+    />
+  );
 };
 
 export default InputTable;
