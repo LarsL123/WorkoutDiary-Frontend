@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
-import { getRows } from "../services/rawData.js";
+import getRows from "./modelToView.js";
 
 const useFetch = url => {
   const [data, updateData] = useState(undefined);
@@ -20,20 +20,8 @@ const useFetch = url => {
 
 const InputTable = props => {
   const [columns, setColumns] = useState(null);
-  const [height, setHeight] = useState(0);
-  const response = useFetch(0) || [];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setHeight(window.scrollY);
-      console.log(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, true);
-    return () => {
-      window.removeEventListener("scroll", handleScroll); //Confirm that it removes
-    };
-  }, []);
+  const data = useFetch(0) || [];
 
   //Create columns:
   useEffect(() => {
@@ -48,33 +36,47 @@ const InputTable = props => {
       { path: "zones.4", label: "4" },
       { path: "zones.5", label: "5" }
     ];
-
-    // const deleteColumn = {
-    //   key: "delete",
-    //   content: movie => (
-    //     <button
-    //       onClick={() => props.onDelete(movie)}
-    //       className="btn btn-danger btn-sm"
-    //     >
-    //       Delete
-    //     </button>
-    //   )
-    // };
-
-    //   const user = auth.getCurrentUser();
-    //   if (user && user.isAdmin) {
-    //     newColumns.push(deleteColumn);
-    //   }
+    {
+      // const deleteColumn = {
+      //   key: "delete",
+      //   content: movie => (
+      //     <button
+      //       onClick={() => props.onDelete(movie)}
+      //       className="btn btn-danger btn-sm"
+      //     >
+      //       Delete
+      //     </button>
+      //   )
+      // };
+      //   const user = auth.getCurrentUser();
+      //   if (user && user.isAdmin) {
+      //     newColumns.push(deleteColumn);
+      //   }
+    }
     setColumns(newColumns);
   }, []);
 
   return (
     <Table
       columns={columns}
-      data={response}
+      data={data}
       widths={["10%", "5%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
     />
   );
 };
 
 export default InputTable;
+
+// const [height, setHeight] = useState(0);
+
+// useEffect(() => {
+//   const handleScroll = () => {
+//     setHeight(window.scrollY);
+//     console.log(window.scrollY);
+//   };
+
+//   window.addEventListener("scroll", handleScroll, true);
+//   return () => {
+//     window.removeEventListener("scroll", handleScroll); //Confirm that it removes
+//   };
+// }, []);

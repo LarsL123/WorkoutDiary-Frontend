@@ -10,7 +10,7 @@ export function getRow() {
       <select className="custom-select">
         <option value="Orientering">orientering</option>
         <option value="Løping">løping</option>
-        <option value="Ski">ski</option>
+        <option value="Ski">ski</option>npm
         <option value="Styrke">styrke</option>
       </select>
     ),

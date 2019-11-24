@@ -1,9 +1,9 @@
-import httpService from "./httpService";
+import httpService from "../services/httpService";
 
 const apiEndpoint = "/workouts";
 let workouts = [];
 
-export async function getRows() {
+export default async function getRows() {
   if (workouts.length < 1) {
     await fetch();
     format();
@@ -18,9 +18,17 @@ async function fetch() {
 
 function format() {
   workouts.forEach(element => {
-    element.date = new Date(element.date)
+    const date = new Date(element.date);
+    const newFormat =
+      date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    element.date = newFormat;
+  });
+}
+
+/*
+new Date(element.date)
       .toJSON()
       .slice(0, 10)
       .replace(/-/g, "/");
-  });
-}
+
+    console.log(element.date); */
