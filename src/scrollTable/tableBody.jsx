@@ -14,6 +14,20 @@ const createKey = (item, column) => {
   return item._id + (column.path || column.key);
 };
 
+let changeTimer = false;
+let lastInstance = null;
+
+const onChange = function({ _targetInst }) {
+  if (changeTimer !== false && _targetInst === lastInstance) {
+    clearTimeout(changeTimer);
+  }
+  lastInstance = _targetInst;
+  changeTimer = setTimeout(function() {
+    console.log("sending ajax"); //CONTINUE HERE: Send post/put ajax request
+    changeTimer = false;
+  }, 1000);
+};
+
 const TableBody = props => {
   const { data, columns, widths } = props;
   return (
@@ -27,6 +41,7 @@ const TableBody = props => {
                   className={styles.td}
                   style={{ width: widths[index], maxWidth: "100px" }}
                   contentEditable={true}
+                  onInput={onChange}
                 >
                   {renderCell(item, column)}
                 </td>
