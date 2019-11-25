@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
-import getRows from "./modelToView.js";
+import getRows from "./data/serverToView.js";
 
 const useFetch = url => {
   const [data, updateData] = useState(undefined);

@@ -17,12 +17,13 @@ const createKey = (item, column) => {
 let changeTimer = false;
 let lastInstance = null;
 
-const onChange = function({ _targetInst }) {
+const onChange = function({ _targetInst, target }) {
   if (changeTimer !== false && _targetInst === lastInstance) {
     clearTimeout(changeTimer);
   }
   lastInstance = _targetInst;
   changeTimer = setTimeout(function() {
+    console.log(target.parentElement.getAttribute("_id"));
     console.log("sending ajax"); //CONTINUE HERE: Send post/put ajax request
     changeTimer = false;
   }, 1000);
@@ -34,7 +35,7 @@ const TableBody = props => {
     <tbody>
       {columns
         ? data.map(item => (
-            <tr key={item._id}>
+            <tr key={item._id} _id={item._id}>
               {columns.map((column, index) => (
                 <td
                   key={createKey(item, column)}

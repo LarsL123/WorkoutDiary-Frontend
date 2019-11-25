@@ -1,4 +1,4 @@
-import httpService from "../services/httpService";
+import httpService from "../../services/httpService";
 
 const apiEndpoint = "/workouts";
 let workouts = [];
@@ -14,6 +14,7 @@ export default async function getRows() {
 async function fetch() {
   const obj = await httpService.get(apiEndpoint);
   workouts = obj.data;
+  console.log(workouts);
 }
 
 function format() {
