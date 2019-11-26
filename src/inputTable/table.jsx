@@ -3,11 +3,10 @@ import TableBody from "./tableBody";
 import TableHeader from "./tableHeader";
 
 const Table = ({ columns, data, widths }) => {
-  //Keeping track of unexpected renders during development.
-  console.log("Rerendering table with: ", data);
+  console.log("Rerendering table with: ", data); //Keeping track of unexpected renders during development.
   return (
-    //Potentially table-sm ??
-    <table className="table table-bordered">
+    //Make user option to have table or table-sm?
+    <table className="table-sm table-bordered">
       <TableHeader columns={columns} />
       <TableBody data={data} columns={columns} widths={widths} />
     </table>

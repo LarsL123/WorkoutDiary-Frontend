@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import styles from "./customTable.module.css";
+import updateWorkout from "./data/viewToServer";
 
 const renderCell = (item, column) => {
   if (column.content) {
@@ -23,10 +24,9 @@ const onChange = function({ _targetInst, target }) {
   }
   lastInstance = _targetInst;
   changeTimer = setTimeout(function() {
-    console.log(target.parentElement.getAttribute("_id"));
-    console.log("sending ajax"); //CONTINUE HERE: Send post/put ajax request
+    updateWorkout(target.parentElement);
     changeTimer = false;
-  }, 1000);
+  }, 3000);
 };
 
 const TableBody = props => {
