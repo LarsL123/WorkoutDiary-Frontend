@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
 import getRows from "./data/serverToView.js";
+import DropRight from "./dropdown/dropRight";
 
 const InputTable = () => {
   const [columns, setColumns] = useState(null);
@@ -9,6 +10,10 @@ const InputTable = () => {
   //Create columns:
   useEffect(() => {
     let cols = [
+      {
+        key: "delete",
+        content: columnData => <DropRight></DropRight>
+      },
       { path: "date", label: "Date" },
       { path: "description", label: "Description" },
       { path: "type", label: "Activity" },
@@ -36,7 +41,7 @@ const InputTable = () => {
     <Table
       columns={columns}
       data={rows}
-      widths={["15%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
+      widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
     />
   );
 };
