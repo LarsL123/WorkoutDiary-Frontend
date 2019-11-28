@@ -1,23 +1,20 @@
 import httpService from "../../services/httpService";
 
 const apiEndpoint = "/workouts";
-let workouts = [];
 
 export default async function getRows() {
-  if (workouts.length < 1) {
-    await fetch();
-    format();
-  }
+  let workouts = await fetch();
+  format(workouts);
   return workouts;
 }
 
 async function fetch() {
   const obj = await httpService.get(apiEndpoint);
-  workouts = obj.data;
-  console.log(workouts);
+  console.log(obj.data);
+  return obj.data;
 }
 
-function format() {
+function format(workouts) {
   workouts.forEach(element => {
     const date = new Date(element.date);
     const newFormat =

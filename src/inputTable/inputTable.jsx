@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
-import getRows from "./data/serverToView.js";
 import DropRight from "./dropdown/dropRight";
+import getRows from "./data/serverToView.js";
+import deleteWorkout from "./data/deleteWorkout";
 
 const InputTable = () => {
   const [columns, setColumns] = useState(null);
   const [data, updateData] = useState(undefined);
 
-  //Create columns:
+  const deleteWorkout = _id => {
+    console.log(data);
+
+    if (!data) return;
+    console.log("her");
+
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+      if (element._id === _id) {
+        data.splice(i, 1);
+        break;
+      }
+    }
+    updateData(data);
+    //deleteWorkout(_id);
+  };
+
   useEffect(() => {
     let cols = [
       {
         key: "delete",
-        content: columnData => <DropRight></DropRight>
+        content: columnData => (
+          <DropRight col={columnData} onDelete={deleteWorkout}></DropRight>
+        )
       },
       { path: "date", label: "Date" },
       { path: "description", label: "Description" },
@@ -35,12 +54,10 @@ const InputTable = () => {
     console.log("Fetched data: ");
   }, []);
 
-  const rows = data || [];
-
   return (
     <Table
       columns={columns}
-      data={rows}
+      data={data || []}
       widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
     />
   );

@@ -7,7 +7,7 @@ export default function updateWorkout(data) {
   const children = data.children;
 
   const dataOut = {
-    date: new Date(), //children[0].textContent //Date convertion not done
+    date: new Date(), //children[0].textContent //Not yet able to store dates
     description: children[1].textContent,
     type: children[2].textContent,
     zones: {
