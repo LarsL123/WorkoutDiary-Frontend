@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DeleteContext } from "../../common/react/deleteContext";
 
-const DropRight = ({ col, onDelete }) => {
-  const deleteCol = () => {
-    const colToDelete = col._id;
-    onDelete(colToDelete);
-    console.log("Delete column: ", colToDelete);
+const DropRight = ({ col }) => {
+  const onDelete = useContext(DeleteContext);
+
+  const onClick = () => {
+    onDelete(col._id);
   };
   return (
     <div className="dropright" contentEditable={false}>
@@ -20,7 +21,7 @@ const DropRight = ({ col, onDelete }) => {
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div className="dropdown-item">Insert New</div>
         <div className="dropdown-divider"></div>
-        <div className="dropdown-item" onClick={deleteCol}>
+        <div className="dropdown-item" onClick={onClick}>
           Delete: &nbsp;&nbsp;&nbsp; <i className="far fa-trash-alt"></i>
         </div>
       </div>

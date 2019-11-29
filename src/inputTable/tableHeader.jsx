@@ -16,7 +16,7 @@ const TableHeader = props => {
                 key={column.path || column.key}
                 scope="col"
               >
-                {column.label}
+                {column.label || column.headerContent(column)}
               </th>
             ))
           : null}

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
-import DropRight from "./dropdown/dropRight";
-import getRows from "./data/serverToView.js";
+import DropRight from "./components/dropRight";
+import NewWorkout from "./components/newWorkout";
+import getRows from "./data/getWorkouts.js";
 import deleteWorkout from "./data/deleteWorkout";
+import createWorkout from "./data/createWorkout";
+import { DeleteContext } from "../common/react/deleteContext";
+import { AddContext } from "../common/react/addContext";
 
 const InputTable = () => {
   const [columns, setColumns] = useState(null);
-  const [data, updateData] = useState(undefined);
+  const [data, updateData] = useState([]);
 
-  const deleteWorkout = _id => {
-    console.log(data);
-
+  const onDelete = _id => {
     if (!data) return;
-    console.log("her");
 
     for (let i = 0; i < data.length; i++) {
       const element = data[i];
@@ -21,17 +22,37 @@ const InputTable = () => {
         break;
       }
     }
-    updateData(data);
-    //deleteWorkout(_id);
+
+    updateData([...data]);
+    console.log(data);
+    deleteWorkout(_id);
+  };
+
+  const addNew = async () => {
+    const _id = await createWorkout();
+    data.unshift({
+      _id,
+      date: "I dag",
+      description: "",
+      type: "",
+      zones: {
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
+      }
+    });
+
+    updateData([...data]);
   };
 
   useEffect(() => {
     let cols = [
       {
         key: "delete",
-        content: columnData => (
-          <DropRight col={columnData} onDelete={deleteWorkout}></DropRight>
-        )
+        content: columnData => <DropRight col={columnData}></DropRight>,
+        headerContent: column => <NewWorkout></NewWorkout>
       },
       { path: "date", label: "Date" },
       { path: "description", label: "Description" },
@@ -55,28 +76,16 @@ const InputTable = () => {
   }, []);
 
   return (
-    <Table
-      columns={columns}
-      data={data || []}
-      widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
-    />
+    <DeleteContext.Provider value={onDelete}>
+      <AddContext.Provider value={addNew}>
+        <Table
+          columns={columns}
+          data={data}
+          widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
+        />
+      </AddContext.Provider>
+    </DeleteContext.Provider>
   );
 };
 
 export default InputTable;
-
-// const deleteColumn = {
-//   key: "delete",
-//   content: movie => (
-//     <button
-//       onClick={() => props.onDelete(movie)}
-//       className="btn btn-danger btn-sm"
-//     >
-//       Delete
-//     </button>
-//   )
-// };
-//   const user = auth.getCurrentUser();
-//   if (user && user.isAdmin) {
-//     newColumns.push(deleteColumn);
-//   }

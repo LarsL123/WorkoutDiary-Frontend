@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import styles from "./customTable.module.css";
-import updateWorkout from "./data/viewToServer";
+import updateWorkout from "./data/saveWorkout";
 
 const renderCell = (item, column) => {
   if (column.content) {
