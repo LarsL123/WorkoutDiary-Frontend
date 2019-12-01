@@ -7,20 +7,19 @@ export default function updateWorkout(data) {
   const children = data.children;
 
   const dataOut = {
-    date: new Date(), //children[0].textContent //Not yet able to store dates
-    description: children[1].textContent,
-    type: children[2].textContent,
+    date: new Date(children[1].firstElementChild.firstElementChild.value),
+    description: children[2].textContent,
+    type: children[3].textContent,
     zones: {
-      1: children[3].textContent || 0,
-      2: children[4].textContent || 0,
-      3: children[5].textContent || 0,
-      4: children[6].textContent || 0,
-      5: children[7].textContent || 0
-      //   6: children[8].textContent || 0,  //not implementet on client side!
-      //   7: children[9].textContent || 0
+      1: children[4].textContent || 0,
+      2: children[5].textContent || 0,
+      3: children[6].textContent || 0,
+      4: children[7].textContent || 0,
+      5: children[8].textContent || 0
     }
   };
-  console.log(dataOut);
+  console.log("The data to be sendt:", dataOut);
+
   send(_id, dataOut);
 }
 
@@ -34,6 +33,4 @@ function send(_id, data) {
       console.log(error);
     }
   );
-
-  console.log("sending ajax: ", _id + " : ");
 }

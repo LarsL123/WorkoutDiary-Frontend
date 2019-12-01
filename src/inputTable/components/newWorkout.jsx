@@ -16,6 +16,7 @@ const NewWorkout = () => {
       <img
         src={pluss}
         style={{ width: "38px", height: "38px", verticalAlign: "top" }}
+        alt="Add"
       ></img>
     </button>
   );

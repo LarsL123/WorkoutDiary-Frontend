@@ -7,6 +7,8 @@ import deleteWorkout from "./data/deleteWorkout";
 import createWorkout from "./data/createWorkout";
 import { DeleteContext } from "../common/react/deleteContext";
 import { AddContext } from "../common/react/addContext";
+import { InputDataContext } from "../common/react/inputDataContext";
+import DateDisplay from "./components/dateDisplay";
 
 const InputTable = () => {
   const [columns, setColumns] = useState(null);
@@ -33,8 +35,8 @@ const InputTable = () => {
     data.unshift({
       _id,
       date: "I dag",
-      description: "",
-      type: "",
+      description: " ",
+      type: " ",
       zones: {
         1: 0,
         2: 0,
@@ -54,7 +56,11 @@ const InputTable = () => {
         content: columnData => <DropRight col={columnData}></DropRight>,
         headerContent: column => <NewWorkout></NewWorkout>
       },
-      { path: "date", label: "Date" },
+      {
+        key: "date",
+        content: column => <DateDisplay col={column}></DateDisplay>,
+        label: "date"
+      },
       { path: "description", label: "Description" },
       { path: "type", label: "Activity" },
       { path: "zones.1", label: "1" },
@@ -76,15 +82,18 @@ const InputTable = () => {
   }, []);
 
   return (
-    <DeleteContext.Provider value={onDelete}>
-      <AddContext.Provider value={addNew}>
-        <Table
-          columns={columns}
-          data={data}
-          widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
-        />
-      </AddContext.Provider>
-    </DeleteContext.Provider>
+    //Please refactor this in next dev-session
+    <InputDataContext.Provider value={{ data, updateData }}>
+      <DeleteContext.Provider value={onDelete}>
+        <AddContext.Provider value={addNew}>
+          <Table
+            columns={columns}
+            data={data}
+            widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
+          />
+        </AddContext.Provider>
+      </DeleteContext.Provider>
+    </InputDataContext.Provider>
   );
 };
 
