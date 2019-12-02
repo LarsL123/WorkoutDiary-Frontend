@@ -9,11 +9,16 @@ async function fetch() {
 
 function format(workouts) {
   // workouts.forEach(element => {
-  //   const date = new Date(element.date);
-  //   const newFormat =
-  //     date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-  //   element.date = newFormat;
-  // }); //TODO: Move date fromatting to dateDisplay.jsx
+  //   const zones = element.zones;
+  //   const values = Object.values(zones);
+  //   values.forEach(value => {
+  //     console.log("did it", value, value === 0);
+  //     if (value === 0) {
+  //       value = " ";
+  //     }
+  //   });
+  //   zones = RIP :-/
+  // });
 }
 
 export default async function getRows() {

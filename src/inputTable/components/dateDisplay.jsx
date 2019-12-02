@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import updateWorkout from "../data/saveWorkout";
-import { InputDataContext } from "../../common/react/inputDataContext";
+import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DateDisplay = ({ col }) => {
   const { date } = col;
-  const { data, updateData } = useContext(InputDataContext);
+  const { data, updateData } = useContext(WorkoutDataContext);
 
   const onChange = event => {
+    console.log("date: ", event.target.value);
     data.forEach(element => {
       if (element._id === col._id) {
         element.date = new Date(event.target.value).toISOString();
@@ -27,6 +28,7 @@ const DateDisplay = ({ col }) => {
         }}
         onChange={onChange}
         value={formatDate(date)}
+        required="required"
       ></input>
     </div>
   );

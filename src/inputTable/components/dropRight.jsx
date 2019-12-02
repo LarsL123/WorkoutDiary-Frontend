@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { DeleteContext } from "../../common/react/deleteContext";
+import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DropRight = ({ col }) => {
-  const onDelete = useContext(DeleteContext);
+  const { onDelete } = useContext(WorkoutDataContext);
 
   const onClick = () => {
     onDelete(col._id);

@@ -1,10 +1,17 @@
 .td {
   /*min-width: 100px;   Add to make minimum size for each individual cell. Should be dymanmic and driffernet for each row */
   vertical-align: middle;
+  text-align: left;
 }
 
 .th {
   position: sticky;
   z-index: 1;
   background-color: lightGray;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  /*Does it work on all  platformes? */
+  -webkit-appearance: none;
+  display: none;
 }

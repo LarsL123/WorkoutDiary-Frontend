@@ -1,17 +1,17 @@
 //Need new name!
 import React, { useContext } from "react";
-import { AddContext } from "../../common/react/addContext";
+import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 import pluss from "../../icons/add.png";
 
 const NewWorkout = () => {
-  const createWorkout = useContext(AddContext);
+  const { addNew } = useContext(WorkoutDataContext);
 
   return (
     <button
       className="btn btn-info"
       type="button"
       style={{ width: "40px", height: "40px", padding: "0" }}
-      onClick={createWorkout}
+      onClick={addNew}
     >
       <img
         src={pluss}
