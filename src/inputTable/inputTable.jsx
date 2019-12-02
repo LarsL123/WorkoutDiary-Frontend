@@ -1,6 +1,6 @@
 //React and jsx
 import React, { useState, useEffect } from "react";
-import Table from "./table";
+import Table from "./table/table";
 import DropRight from "./components/dropRight";
 import NewWorkout from "./components/newWorkout";
 import DateDisplay from "./components/dateDisplay";

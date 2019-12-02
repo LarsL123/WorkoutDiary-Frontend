@@ -1,4 +1,4 @@
-import http from "../../services/httpService";
+import http from "../../common/services/httpService";
 
 const apiEndpoint = "/workouts";
 
