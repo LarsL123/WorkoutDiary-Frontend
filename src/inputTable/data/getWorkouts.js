@@ -8,17 +8,16 @@ async function fetch() {
 }
 
 function format(workouts) {
-  // workouts.forEach(element => {
-  //   const zones = element.zones;
-  //   const values = Object.values(zones);
-  //   values.forEach(value => {
-  //     console.log("did it", value, value === 0);
-  //     if (value === 0) {
-  //       value = " ";
-  //     }
-  //   });
-  //   zones = RIP :-/
-  // });
+  workouts.forEach(element => {
+    const zones = element.zones;
+    const values = Object.values(zones);
+    for (let i = 1; i <= 5; i++) {
+      if (values[i] === 0) {
+        values[i] = " ";
+      }
+    }
+    element.zones = values;
+  });
 }
 
 export default async function getRows() {

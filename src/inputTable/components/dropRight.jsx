@@ -16,7 +16,14 @@ const DropRight = ({ col }) => {
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
-        style={{ width: "40px", height: "40px" }}
+        style={{
+          //Add to style sheet
+          width: "40px",
+          height: "40px",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}
       ></button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div className="dropdown-item">Insert New</div>
