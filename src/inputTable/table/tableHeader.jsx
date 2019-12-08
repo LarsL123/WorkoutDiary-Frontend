@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./customTable.module.css";
+import styles from "./table.module.css";
 
 const TableHeader = props => {
   const { columns } = props;

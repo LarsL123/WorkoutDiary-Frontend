@@ -1,20 +1,6 @@
-import httpService from "../../services/httpService";
+import httpService from "../../common/services/httpService";
 
 const apiEndpoint = "/workouts";
-
-async function fetch() {
-  const obj = await httpService.get(apiEndpoint);
-  return obj.data;
-}
-
-function format(workouts) {
-  // workouts.forEach(element => {
-  //   const date = new Date(element.date);
-  //   const newFormat =
-  //     date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-  //   element.date = newFormat;
-  // }); //TODO: Move date fromatting to dateDisplay.jsx
-}
 
 export default async function getRows() {
   let workouts = await fetch();
@@ -22,10 +8,26 @@ export default async function getRows() {
   return workouts;
 }
 
-/*
-new Date(element.date)
-      .toJSON()
-      .slice(0, 10)
-      .replace(/-/g, "/");
+async function fetch() {
+  const obj = await httpService.get(apiEndpoint);
+  return obj.data;
+}
 
-    console.log(element.date); */
+function format(workouts) {
+  removeZeroes(workouts);
+}
+
+function removeZeroes(workouts) {
+  workouts.forEach(element => {
+    const zones = element.zones;
+    if (!zones) return;
+
+    const values = Object.values(zones);
+    for (let i = 1; i <= 5; i++) {
+      if (values[i] === 0) {
+        values[i] = " ";
+      }
+    }
+    element.zones = values;
+  });
+}

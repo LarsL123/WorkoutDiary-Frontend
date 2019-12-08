@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
-import { DeleteContext } from "../../common/react/deleteContext";
+import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DropRight = ({ col }) => {
-  const onDelete = useContext(DeleteContext);
+  const { onDelete: del, addNew } = useContext(WorkoutDataContext);
 
-  const onClick = () => {
-    onDelete(col._id);
+  const onDelete = () => {
+    del(col._id);
   };
+
+  const onNew = () => {
+    addNew(new Date(col.date).toISOString());
+  };
+
   return (
     <div className="dropright" contentEditable={false}>
       <button
@@ -16,12 +21,20 @@ const DropRight = ({ col }) => {
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
-        style={{ width: "40px", height: "40px" }}
+        style={{
+          width: "40px",
+          height: "40px",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}
       ></button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <div className="dropdown-item">Insert New</div>
+        <div className="dropdown-item" onClick={onNew}>
+          Insert New
+        </div>
         <div className="dropdown-divider"></div>
-        <div className="dropdown-item" onClick={onClick}>
+        <div className="dropdown-item" onClick={onDelete}>
           Delete: &nbsp;&nbsp;&nbsp; <i className="far fa-trash-alt"></i>
         </div>
       </div>

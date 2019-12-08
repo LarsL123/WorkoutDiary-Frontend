@@ -1,14 +1,14 @@
+//React and jsx
 import React, { useState, useEffect } from "react";
-import Table from "./table";
+import Table from "./table/table";
 import DropRight from "./components/dropRight";
 import NewWorkout from "./components/newWorkout";
+import DateDisplay from "./components/dateDisplay";
+//Data
 import getRows from "./data/getWorkouts.js";
 import deleteWorkout from "./data/deleteWorkout";
 import createWorkout from "./data/createWorkout";
-import { DeleteContext } from "../common/react/deleteContext";
-import { AddContext } from "../common/react/addContext";
-import { InputDataContext } from "../common/react/inputDataContext";
-import DateDisplay from "./components/dateDisplay";
+import { WorkoutDataContext } from "../common/react/workoutDataContext";
 
 const InputTable = () => {
   const [columns, setColumns] = useState(null);
@@ -30,19 +30,19 @@ const InputTable = () => {
     deleteWorkout(_id);
   };
 
-  const addNew = async () => {
+  const addNew = async date => {
     const _id = await createWorkout();
     data.unshift({
       _id,
-      date: "I dag",
+      date: date,
       description: " ",
       type: " ",
       zones: {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0
+        1: " ",
+        2: " ",
+        3: " ",
+        4: " ",
+        5: " "
       }
     });
 
@@ -82,18 +82,13 @@ const InputTable = () => {
   }, []);
 
   return (
-    //Please refactor this in next dev-session
-    <InputDataContext.Provider value={{ data, updateData }}>
-      <DeleteContext.Provider value={onDelete}>
-        <AddContext.Provider value={addNew}>
-          <Table
-            columns={columns}
-            data={data}
-            widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
-          />
-        </AddContext.Provider>
-      </DeleteContext.Provider>
-    </InputDataContext.Provider>
+    <WorkoutDataContext.Provider value={{ data, updateData, addNew, onDelete }}>
+      <Table
+        columns={columns}
+        data={data}
+        widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
+      />
+    </WorkoutDataContext.Provider>
   );
 };
 

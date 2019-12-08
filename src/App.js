@@ -1,6 +1,6 @@
 import React from "react";
 import InputTable from "./inputTable/inputTable.jsx";
-import httpService from "./services/httpService";
+import httpService from "./common/services/httpService";
 import "./App.css";
 
 function App() {

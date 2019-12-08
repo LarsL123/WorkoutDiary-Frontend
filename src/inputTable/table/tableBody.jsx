@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
-import styles from "./customTable.module.css";
-import updateWorkout from "./data/saveWorkout";
+import styles from "./table.module.css";
+import updateWorkout from "../data/saveWorkout";
 
 const renderCell = (item, column) => {
   if (column.content) {
@@ -16,13 +16,15 @@ const createKey = (item, column) => {
 };
 
 let changeTimer = false;
-let lastInstance = null;
+let lastInstanceId = null;
 
-const onChange = function({ _targetInst, target }) {
-  if (changeTimer !== false && _targetInst === lastInstance) {
+const onChange = function({ target }) {
+  const _id = target.parentElement.getAttribute("_id");
+
+  if (changeTimer !== false && _id === lastInstanceId) {
     clearTimeout(changeTimer);
   }
-  lastInstance = _targetInst;
+  lastInstanceId = _id;
   changeTimer = setTimeout(function() {
     updateWorkout(target.parentElement);
     changeTimer = false;
