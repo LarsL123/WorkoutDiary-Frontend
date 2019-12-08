@@ -30,11 +30,11 @@ const InputTable = () => {
     deleteWorkout(_id);
   };
 
-  const addNew = async () => {
+  const addNew = async date => {
     const _id = await createWorkout();
     data.unshift({
       _id,
-      date: new Date().toISOString(),
+      date: date,
       description: " ",
       type: " ",
       zones: {

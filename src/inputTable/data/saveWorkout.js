@@ -30,7 +30,6 @@ function send(_id, data) {
     },
     error => {
       //Implement logger/ expose user of error.
-
       console.log(error.response);
     }
   );

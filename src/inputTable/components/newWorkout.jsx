@@ -6,12 +6,16 @@ import pluss from "../../icons/add.png";
 const NewWorkout = () => {
   const { addNew } = useContext(WorkoutDataContext);
 
+  const onClick = () => {
+    addNew(new Date().toISOString());
+  };
+
   return (
     <button
       className="btn btn-info"
       type="button"
       style={{ width: "40px", height: "40px", padding: "0" }}
-      onClick={addNew}
+      onClick={onClick}
     >
       <img
         src={pluss}
