@@ -21,26 +21,3 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm test
-
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-      - run:
-          name: Building and uploading image to DockerHub
-          command: lp ./repo
-
-workflows:
-  version: 2.1
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
