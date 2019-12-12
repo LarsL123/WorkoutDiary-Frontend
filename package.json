@@ -14,7 +14,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ci:docker": "",
+    "docker:build": "docker build -t larsl123/workoutdiaryfrontend:latest .",
+    "docker:login": "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD",
+    "docker:push": "docker push larsl123/workoutdiaryfrontend:latest",
+    "ci:docker": "npm run docker:build && npm run docker:login && npm run docker:push",
     "size": "npm run build && size-limit"
   },
   "eslintConfig": {
