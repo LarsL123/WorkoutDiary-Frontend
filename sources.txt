@@ -10,5 +10,12 @@ Open source data visualization:
     Victore libary, made for React: https://formidable.com/open-source/victory/gallery/
 
 
+Docker:
 
+Main setup with tests and checks:
+    https://medium.com/@eferhatg/create-react-app-continuous-integration-config-with-circleci-and-aws-2b0238cde169
+Deployment step with docker and Nginx:
+    https://mherman.org/blog/dockerizing-a-react-app/
+
+Less important: https://medium.com/better-programming/how-to-setup-continuous-integration-ci-with-react-circleci-and-github-e0efd5040b03
 
