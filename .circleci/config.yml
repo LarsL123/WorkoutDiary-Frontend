@@ -1,4 +1,5 @@
 version: 2.1
+# See npm command-defenitions in package.json
 jobs:
   build:
     docker:
@@ -20,9 +21,13 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run size
+      - run:
+          name: Check size and loadspeed
+          command: npm run size
 
-      - run: npm test
+      - run:
+          name: Run tests
+          command: npm test
 
   deploy:
     machine:
@@ -43,8 +48,10 @@ workflows:
       - deploy:
           requires:
             - build
-          #filters:
-          #branches:
-          #  only: master
+          filters:
+            branches:
+              only: master
   # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
   # TODO: Add ESLint code check.
+  # TODO: Add automated version upating.
+  # TODO: Add dependency scanner - https://snyk.io/
