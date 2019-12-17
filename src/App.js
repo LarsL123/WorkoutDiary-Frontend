@@ -7,6 +7,8 @@ function App() {
   httpService.setJwt(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGQ5MmE5NDhiZjM3MTM3Y2NhOWVmNmMiLCJpYXQiOjE1NzQ1ODU3NjJ9.CnbFwCWSKQFKD0bObfoWT5AoDl7oKeV-7xW7RrcvJ2g"
   ); //Hardcoded token. Remove as fast as possivble. TODO: Add user login
+  console.log(window.BACKEND_URI);
+
   return (
     <div className="App">
       <div>
