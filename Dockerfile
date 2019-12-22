@@ -10,8 +10,16 @@ RUN npm run build
 
 # production environment
 FROM nginx:1.16.0-alpine
+# alpine does not have bash or coreutils natively  (coreutils used in /nginx/shart.sh)
+RUN apk add bash
+RUN apk add coreutils 
 COPY --from=build /app/build /usr/share/nginx/html
+# add config file
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx/nginx.conf /etc/nginx/conf.d
+# add start script
+COPY nginx/start.sh ./
+# default http port
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["bash", "./start.sh"]
