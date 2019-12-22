@@ -19,3 +19,10 @@ Deployment step with docker and Nginx:
 
 Less important: https://medium.com/better-programming/how-to-setup-continuous-integration-ci-with-react-circleci-and-github-e0efd5040b03
 
+CircleCI blog to improve deployment:
+Look at start-up-script and evaluate relavance. 
+    https://circleci.com/blog/build-cicd-piplines-using-docker/
+Read
+    https://circleci.com/blog/continuous-deployment-without-downtime/
+    https://circleci.com/blog/path-to-production-how-and-where-to-segregate-test-environments/
+

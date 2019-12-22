@@ -1,3 +1,7 @@
-echo "" | sudo tee ./build/config.js
-echo 'var BACKEND_URI = "'$BACKEND_URI'";'| sudo tee ./build/config.js
-nginx -g daemon off;
+# clear config.js file
+echo "" | tee ./usr/share/nginx/html/config.js
+# add enviroment variables to it: 
+# TODO: Make dynamic/expand.
+echo 'var BACKEND_URI = "'$BACKEND_URI'";'| tee ./usr/share/nginx/html/config.js
+# start nginx
+nginx -g 'daemon off;' 
