@@ -1,6 +1,11 @@
 import React from "react";
 import InputTable from "./inputTable/inputTable.jsx";
 import httpService from "./common/services/httpService";
+import { Route, Switch, Redirect } from "react-router-dom";
+import LoginForm from "./common/users/forms/loginForm";
+import RegisterForm from "./common/users/forms/registerForm";
+import Logout from "./common/users/forms/logout";
+
 import "./App.css";
 
 function App() {
@@ -9,11 +14,17 @@ function App() {
   ); //Hardcoded token. Remove as fast as possivble. TODO: Add user login
   console.log(window.BACKEND_URI);
 
+  //TODO copy structure from Vidly
   return (
     <div className="App">
-      <div>
-        <InputTable></InputTable>
-      </div>
+      <Switch>
+        <Route path="/login" component={LoginForm} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/register" component={RegisterForm} />
+        <div>
+          <InputTable></InputTable>
+        </div>
+      </Switch>
     </div>
   );
 }
