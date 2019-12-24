@@ -10,7 +10,7 @@ import deleteWorkout from "./data/deleteWorkout";
 import createWorkout from "./data/createWorkout";
 import { WorkoutDataContext } from "../common/react/workoutDataContext";
 
-const InputTable = () => {
+const InputTable = ({ user }) => {
   const [columns, setColumns] = useState(null);
   const [data, updateData] = useState([]);
 
@@ -81,6 +81,7 @@ const InputTable = () => {
     console.log("Fetched data: ");
   }, []);
 
+  if (!user) return <h4>You have to be logged in to se your input data</h4>;
   return (
     <WorkoutDataContext.Provider value={{ data, updateData, addNew, onDelete }}>
       <Table

@@ -1,4 +1,4 @@
-import auth from "../services/authService";
+import auth from "../../services/authService";
 
 //TODO: Don't keep in forms folder
 
