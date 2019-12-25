@@ -4,7 +4,7 @@ import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DateDisplay = ({ col }) => {
   const { date } = col;
-  const { data, updateData } = useContext(WorkoutDataContext);
+  const { data, setData } = useContext(WorkoutDataContext);
 
   const onChange = event => {
     console.log("date: ", event.target.value);
@@ -14,7 +14,7 @@ const DateDisplay = ({ col }) => {
       }
     });
 
-    updateData([...data]);
+    setData([...data]);
     updateWorkout(event.target.closest("tr"));
   };
 

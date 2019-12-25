@@ -13,6 +13,7 @@ import NotFound from "./common/nav/notFound/notFound";
 import LoginForm from "./common/users/forms/loginForm";
 import RegisterForm from "./common/users/forms/registerForm";
 import Logout from "./common/users/forms/logout";
+import Profile from "./common/nav/profile/profile"
 import "./App.css";
 
 //TODO copy structure from Vidly
@@ -33,6 +34,7 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/logout" component={Logout} />
           <Route path="/register" component={RegisterForm} />
+          <Route path="/profile" component={Profile} />
           <Route path="/summary" component={Summary} />
           <Route
             path="/input"
