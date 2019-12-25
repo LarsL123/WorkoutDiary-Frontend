@@ -1,25 +1,24 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Workout Diary
-      </Link>
-
+      <a className="navbar-brand" href="/">
+        Workout Diary 
+      </a>
       <button
         className="navbar-toggler"
         type="button"
-        data-toggele="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar.toggler-icon" />
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <div className="navbar-nav">
           <NavLink className="nav-item nav-link" to="/summary">
             Summary
