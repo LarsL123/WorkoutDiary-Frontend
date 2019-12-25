@@ -5,49 +5,29 @@ import DropRight from "./components/dropRight";
 import NewWorkout from "./components/newWorkout";
 import DateDisplay from "./components/dateDisplay";
 //Data
-import getRows from "./data/getWorkouts.js";
-import deleteWorkout from "./data/deleteWorkout";
+import getWorkouts from "./data/getWorkouts.js";
 import createWorkout from "./data/createWorkout";
+import deleteWorkout from "./data/deleteWorkout";
 import { WorkoutDataContext } from "../common/react/workoutDataContext";
 
-const InputTable = () => {
+const InputTable = ({ user }) => {
   const [columns, setColumns] = useState(null);
-  const [data, updateData] = useState([]);
+  const [data, setData] = useState([]);
 
-  const onDelete = _id => {
-    if (!data) return;
+  const create = date => {
+    createWorkout(data, setData, date);
+  };
 
-    for (let i = 0; i < data.length; i++) {
-      const element = data[i];
-      if (element._id === _id) {
-        data.splice(i, 1);
-        break;
-      }
+  const del = _id => {
+    deleteWorkout(data, setData, _id);
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      setData(await getWorkouts());
     }
-
-    updateData([...data]);
-    console.log(data);
-    deleteWorkout(_id);
-  };
-
-  const addNew = async date => {
-    const _id = await createWorkout();
-    data.unshift({
-      _id,
-      date: date,
-      description: " ",
-      type: " ",
-      zones: {
-        1: " ",
-        2: " ",
-        3: " ",
-        4: " ",
-        5: " "
-      }
-    });
-
-    updateData([...data]);
-  };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     let cols = [
@@ -73,16 +53,11 @@ const InputTable = () => {
     setColumns(cols);
   }, []);
 
-  useEffect(() => {
-    async function fetchData() {
-      updateData(await getRows());
-    }
-    fetchData();
-    console.log("Fetched data: ");
-  }, []);
-
+  if (!user) return <h4>You have to be logged in to se your input data</h4>;
   return (
-    <WorkoutDataContext.Provider value={{ data, updateData, addNew, onDelete }}>
+    <WorkoutDataContext.Provider
+      value={{ data, setData, createWorkout: create, deleteWorkout: del }}
+    >
       <Table
         columns={columns}
         data={data}

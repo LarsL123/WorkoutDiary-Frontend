@@ -4,10 +4,10 @@ import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 import pluss from "../../icons/add.png";
 
 const NewWorkout = () => {
-  const { addNew } = useContext(WorkoutDataContext);
+  const { createWorkout } = useContext(WorkoutDataContext);
 
   const onClick = () => {
-    addNew(new Date().toISOString());
+    createWorkout(new Date().toISOString());
   };
 
   return (

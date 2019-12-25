@@ -1,5 +1,4 @@
 .td {
-  /*min-width: 100px;   Add to make minimum size for each individual cell. Should be dymanmic and driffernet for each row */
   vertical-align: middle;
   text-align: left;
 }
