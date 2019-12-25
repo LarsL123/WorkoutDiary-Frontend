@@ -2,7 +2,7 @@ import httpService from "../../common/services/httpService";
 
 const apiEndpoint = "/workouts";
 
-export default async function getRows() {
+export default async function getWorkouts() {
   let workouts = await fetch();
   format(workouts);
   return workouts;

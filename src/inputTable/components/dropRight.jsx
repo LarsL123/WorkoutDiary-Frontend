@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DropRight = ({ col }) => {
-  const { onDelete: del, addNew } = useContext(WorkoutDataContext);
-
-  const onDelete = () => {
-    del(col._id);
-  };
+  const { createWorkout, deleteWorkout } = useContext(WorkoutDataContext);
 
   const onNew = () => {
-    addNew(new Date(col.date).toISOString());
+    createWorkout(new Date(col.date).toISOString());
+  };
+
+  const onDelete = () => {
+    deleteWorkout(col._id);
   };
 
   return (

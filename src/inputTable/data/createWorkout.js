@@ -2,13 +2,27 @@ import http from "../../common/services/httpService";
 
 const apiEndpoint = "/workouts";
 
-export default async function createWorkout() {
+export default async function createWorkout(data, setData, date) {
   try {
     const response = await http.post(apiEndpoint);
-    console.log("yay created");
-    return response.data._id;
+    const _id = response.data._id;
+
+    data.unshift({
+      _id,
+      date: date,
+      description: " ",
+      type: " ",
+      zones: {
+        1: " ",
+        2: " ",
+        3: " ",
+        4: " ",
+        5: " "
+      }
+    });
+
+    setData([...data]);
   } catch (error) {
-    //TODO ---Remove workout form array
     console.log(error); //Implement logger/ expose user of error.
   }
 }

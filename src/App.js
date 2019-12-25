@@ -14,10 +14,13 @@ import LoginForm from "./common/users/forms/loginForm";
 import RegisterForm from "./common/users/forms/registerForm";
 import Logout from "./common/users/forms/logout";
 import "./App.css";
+
 //TODO copy structure from Vidly
 function App() {
   console.log(window.BACKEND_URI);
+
   const [user, setUser] = useState();
+
   useEffect(() => {
     setUser(auth.getCurrentUser());
   }, []);

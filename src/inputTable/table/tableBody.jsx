@@ -45,6 +45,7 @@ const TableBody = props => {
                   style={{ width: widths[index], maxWidth: "200px" }}
                   contentEditable={true}
                   onInput={onChange}
+                  suppressContentEditableWarning={true} //React is warning about changing the ts's childeren without triggering rerender. Dont think that is a problem here.
                 >
                   {renderCell(item, column)}
                 </td>
