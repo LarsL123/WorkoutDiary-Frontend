@@ -4,17 +4,16 @@ import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
 const DateDisplay = ({ col }) => {
   const { date } = col;
-  const { data, updateData } = useContext(WorkoutDataContext);
+  const { data, setData } = useContext(WorkoutDataContext);
 
   const onChange = event => {
-    console.log("date: ", event.target.value);
     data.forEach(element => {
       if (element._id === col._id) {
         element.date = new Date(event.target.value).toISOString();
       }
     });
 
-    updateData([...data]);
+    setData([...data]);
     updateWorkout(event.target.closest("tr"));
   };
 

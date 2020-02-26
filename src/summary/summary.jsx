@@ -1,7 +1,8 @@
 import React from "react";
+import ZoneDiagram from "./intensityZones/zoneDiagram"
 
 const Summary = () => {
-  return <h4>Summary and stats coming soon!</h4>;
+  return <ZoneDiagram></ZoneDiagram>;
 };
 
 export default Summary;

@@ -10,6 +10,7 @@ export default async function getWorkouts() {
 
 async function fetch() {
   const obj = await httpService.get(apiEndpoint);
+  console.log(obj.data);
   return obj.data;
 }
 
@@ -22,12 +23,10 @@ function removeZeroes(workouts) {
     const zones = element.zones;
     if (!zones) return;
 
-    const values = Object.values(zones);
     for (let i = 1; i <= 5; i++) {
-      if (values[i] === 0) {
-        values[i] = " ";
+      if (zones[i] === 0) {
+        zones[i] = " ";
       }
     }
-    element.zones = values;
   });
 }
