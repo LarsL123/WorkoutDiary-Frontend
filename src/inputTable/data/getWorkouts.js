@@ -10,7 +10,6 @@ export default async function getWorkouts() {
 
 async function fetch() {
   const obj = await httpService.get(apiEndpoint);
-  console.log(obj.data);
   return obj.data;
 }
 

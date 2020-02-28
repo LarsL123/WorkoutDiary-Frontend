@@ -1,7 +1,8 @@
 //Based on: https://formidable.com/open-source/victory/gallery/custom-tooltip-labels/
 
 import React, { useState, useEffect } from "react";
-import { VictoryLabel, VictoryTooltip, VictoryPie } from "victory";
+import { VictoryPie } from "victory";
+import ZoneLabel from "./zoneLabel";
 import getZoneData from "./formatData";
 
 const ZoneDiagram = () => {
@@ -15,12 +16,6 @@ const ZoneDiagram = () => {
     }
     fetchData();
   }, [fromDate, toDate]);
-
-  console.log(fromDate);
-  console.log(toDate);
-
-  console.log(fromDate.toISOString().split("T")[0]);
-  console.log(toDate.toISOString().split("T")[0]);
 
   return (
     <React.Fragment>
@@ -52,9 +47,7 @@ const ZoneDiagram = () => {
         style={{ labels: { fill: "white" } }}
         innerRadius={100}
         labelRadius={120}
-        labels={({ datum }) => 
-           datum.y === 0 ? "" : `# ${datum.x}`
-        }
+        labels={({ datum }) => (datum.y === 0 ? "" : `# ${datum.x}`)}
         labelComponent={<ZoneLabel />}
         data={data}
       />
@@ -63,25 +56,3 @@ const ZoneDiagram = () => {
 };
 
 export default ZoneDiagram;
-
-const ZoneLabel = props => {
-  return (
-    <g>
-      <VictoryLabel {...props} />
-      <VictoryTooltip
-        {...props}
-        x={200}
-        y={250}
-        orientation="top"
-        pointerLength={0}
-        cornerRadius={50}
-        flyoutWidth={100}
-        flyoutHeight={100}
-        flyoutStyle={{ fill: "black" }}
-        text={({ datum }) => `Minutes: ${datum.y}`}
-      />
-    </g>
-  );
-};
-
-ZoneLabel.defaultEvents = VictoryTooltip.defaultEvents;
