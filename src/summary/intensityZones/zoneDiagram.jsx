@@ -45,6 +45,7 @@ const ZoneDiagram = () => {
 
       <VictoryPie
         style={{ labels: { fill: "white" } }}
+        colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
         innerRadius={100}
         labelRadius={120}
         labels={({ datum }) => (datum.y === 0 ? "" : `# ${datum.x}`)}
