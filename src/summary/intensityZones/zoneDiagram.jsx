@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { VictoryPie } from "victory";
 import ZoneLabel from "./zoneLabel";
-import getZoneData from "./formatData";
+import getZoneData from "./zoneData";
 
 const ZoneDiagram = () => {
   const [data, setData] = useState([]);

@@ -3,8 +3,6 @@ import httpService from "../../common/services/httpService";
 export default async function getZoneData(fromDate, toDate) {
   const { data } = await httpService.get(`/workouts/${fromDate}/${toDate}`);
 
-  console.log(data)
-
   if (!data) return [];
 
   let processedData = [
