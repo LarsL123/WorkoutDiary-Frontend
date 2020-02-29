@@ -19,7 +19,7 @@ const ZoneDiagram = () => {
 
   return (
     <React.Fragment>
-      <div className="row">
+      <div className="row" style={{width:"100%"}}>
         <label htmlFor="example-date-input" className="col-2 col-form-label">
           From/To
         </label>
