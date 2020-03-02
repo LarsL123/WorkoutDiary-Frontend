@@ -2,6 +2,9 @@ import httpService from "../../common/services/httpService";
 import getWeekNumber from "../../common/utils/dateUtils";
 
 export default async function getChartLine(fromDate, toDate) {
+  console.log(fromDate);
+  console.log(toDate);
+
   const { data } = await httpService.get(`/workouts/${fromDate}/${toDate}`);
 
   if (!data) return [];
