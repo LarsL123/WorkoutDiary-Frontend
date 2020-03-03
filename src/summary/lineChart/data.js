@@ -10,7 +10,7 @@ export default async function getChartLine(fromDate, toDate) {
   if (!data) return [];
 
   let processedData = [];
-  for (let i = 1; i < 53; i++) {
+  for (let i = 0; i < 53; i++) {
     processedData[i] = { week: i, minutes: 0 };
   }
 

@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import MinuteGraph from "./minuteGraph";
-import getChartLine from "./chartData";
-import CurrentYears from "./currentYears";
+import MinuteGraph from "./graph";
+import getChartLine from "./data";
+import CurrentYears from "./yearsToDisplay";
 import Selector from "../../common/components/select";
+
+const timeRanges = [
+  { name: "Full Year", obj: { from: "01.01.", to: "12.31." }},
+  { name: "Winter", obj: { from: "11.01.", to: "31.4." } },
+  { name: "Summer", obj: { from: "04.01.", to: "10.31." } }
+];
 
 const LineChart = () => {
   const [data, setData] = useState([]);
-  const [yearSpan, setYearSpan] = useState({ from: "01.01.", to: "12.31." });
+  const [yearSpan, setYearSpan] = useState(timeRanges[0].obj);
 
   const addYear = async year => {
     year = Number.parseInt(year);
@@ -20,6 +26,8 @@ const LineChart = () => {
       year,
       weeks: await getChartLine(yearSpan.from + year, yearSpan.to + year)
     };
+
+    console.log(newYear.color);
 
     setData(data.concat(newYear));
   };
@@ -41,11 +49,7 @@ const LineChart = () => {
 
           <div style={{ float: "right", width: "50%" }}>
             <Selector
-              listOption={[
-                { name: "Full Year", obj: { from: "01.01.", to: "12.31." } },
-                { name: "Winter", obj: { from: "11.01.", to: "31.4." } },
-                { name: "Summer", obj: { from: "04.01.", to: "10.31." } }
-              ]}
+              listOption={timeRanges}
               setSelected={setYearSpan}
             ></Selector>
           </div>
@@ -70,5 +74,7 @@ export default LineChart;
 
 //Move to utils
 const getRandomColor = () => {
-  return "#" + Math.floor(Math.random() * 0x1000000).toString(16);
+  return (
+    "#" + Math.max(Math.floor(Math.random() * 0x1000000), 0x100000).toString(16)
+  );
 };
