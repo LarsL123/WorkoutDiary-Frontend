@@ -16,18 +16,17 @@ export default async function getChartLine(fromDate, toDate) {
 
   data.forEach(workout => {
     let minutes = 0;
-    for(let i = 1; i <= 7; i++)
-        minutes += workout.zones[i];
-    
+    for (let i = 1; i <= 7; i++) minutes += workout.zones[i];
+
     const [week] = getWeekNumber(new Date(workout.date));
 
     processedData[week].minutes += minutes;
   });
 
-  for(let i = 2; i < processedData.length; i++)
+  for (let i = 2; i < processedData.length; i++)
     processedData[i].minutes += processedData[i - 1].minutes;
-  
-  //TODO: Divide by 60, to make hours
+
+  for (let i = 1; i < processedData.length; i++) processedData[i].minutes /= 60; //Convert to hours
 
   return processedData;
 }

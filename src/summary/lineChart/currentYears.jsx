@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const minWidth = "120px";
+
 const CurrentYears = ({ addYear, data, setData }) => {
   const [year, setYear] = useState(2020);
 
@@ -12,8 +14,9 @@ const CurrentYears = ({ addYear, data, setData }) => {
         {data.map(thisYear => (
           <button
             type="button"
-            className="list-group-item list-group-item-action"
-            style={{ textAlign: "center", color: thisYear.color }}
+            className="list-group-item list-group-item-action btn-sm"
+            style={{ textAlign: "center", color: thisYear.color, minWidth }}
+            key={thisYear.year}
             onClick={() =>
               setData(prevState =>
                 prevState.filter(index => index.year !== thisYear.year)
@@ -26,13 +29,13 @@ const CurrentYears = ({ addYear, data, setData }) => {
 
         <button
           type="button"
-          className="list-group-item list-group-item-action active"
-          style={{ textAlign: "center" }}
+          className="list-group-item list-group-item-action btn-sm"
+          style={{ textAlign: "center", minWidth }}
           onClick={() => {
             addYear(year);
           }}
         >
-          Add:
+          Add: &nbsp;
           <input
             type="number"
             min="1900"
