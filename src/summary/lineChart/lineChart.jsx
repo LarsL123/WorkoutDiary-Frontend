@@ -5,9 +5,14 @@ import CurrentYears from "./yearsToDisplay";
 import Selector from "../../common/components/select";
 
 const timeRanges = [
-  { name: "Full Year", obj: { from: "01.01.", to: "12.31." }},
-  { name: "Winter", obj: { from: "11.01.", to: "31.4." } },
-  { name: "Summer", obj: { from: "04.01.", to: "10.31." } }
+  { name: "Full Year", obj: { from: "01.01.", to: "12.31." } },
+  {
+    name: "More time ranges comming soon...",
+    obj: { from: "01.01.", to: "12.31." }
+  }
+
+  // { name: "Winter", obj: { from: "11.01.", to: "31.4." } },
+  // { name: "Summer", obj: { from: "04.01.", to: "10.31." } }
 ];
 
 const LineChart = () => {
@@ -27,8 +32,6 @@ const LineChart = () => {
       weeks: await getChartLine(yearSpan.from + year, yearSpan.to + year)
     };
 
-    console.log(newYear.color);
-
     setData(data.concat(newYear));
   };
 
@@ -44,13 +47,13 @@ const LineChart = () => {
               float: "left"
             }}
           >
-            Total Minutes
+            Total Hours
           </h3>
 
           <div style={{ float: "right", width: "50%" }}>
             <Selector
               listOption={timeRanges}
-              setSelected={setYearSpan}
+              selectedSetter={setYearSpan}
             ></Selector>
           </div>
         </div>

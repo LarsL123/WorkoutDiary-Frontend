@@ -1,5 +1,5 @@
 import React from "react";
-import ZoneDiagram from "./intensityZones/zoneDiagram";
+import ZoneDiagram from "./intensityZones/intensityZoneDiagram";
 import LineChart from "./lineChart/lineChart";
 
 const Summary = () => {

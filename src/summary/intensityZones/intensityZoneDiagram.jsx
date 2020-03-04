@@ -2,8 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import { VictoryPie } from "victory";
-import ZoneLabel from "./zoneLabel";
-import getZoneData from "./zoneData";
+import ZoneLabel from "./label";
+import getZoneData from "./data";
+
+const colorScale = [
+  "lightGreen",
+  "green",
+  "yellow",
+  "orange",
+  "red",
+  "blue",
+  "aqua"
+];
 
 const ZoneDiagram = () => {
   const [data, setData] = useState([]);
@@ -19,7 +29,7 @@ const ZoneDiagram = () => {
 
   return (
     <React.Fragment>
-      <div className="row" style={{width:"100%"}}>
+      <div className="row" style={{ width: "100%" }}>
         <label htmlFor="example-date-input" className="col-2 col-form-label">
           From/To
         </label>
@@ -45,12 +55,14 @@ const ZoneDiagram = () => {
 
       <VictoryPie
         style={{ labels: { fill: "white" } }}
-        colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
+        colorScale={colorScale}
         innerRadius={100}
         labelRadius={120}
-        labels={({ datum }) => (datum.y === 0 ? "" : `# ${datum.x}`)}
+        labels={({ datum }) => (datum.minutes === 0 ? "" : `# ${datum.zone}`)}
         labelComponent={<ZoneLabel />}
         data={data}
+        x="zone"
+        y="minutes"
       />
     </React.Fragment>
   );

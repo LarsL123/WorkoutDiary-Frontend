@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { VictoryChart, VictoryZoomContainer, VictoryLine } from "victory";
 
 const MinuteGraph = ({ data }) => {
-
   const [zoomDomain, setZoomDomain] = useState({ x: [1, 50] }); //Change to controll
 
   const handleZoom = domain => {

@@ -15,7 +15,7 @@ const ZoneLabel = props => {
         flyoutWidth={100}
         flyoutHeight={100}
         flyoutStyle={{ fill: "black" }}
-        text={({ datum }) => `Minutes: ${datum.y}`}
+        text={({ datum }) => `Minutes: ${datum.minutes}`}
       />
     </g>
   );
