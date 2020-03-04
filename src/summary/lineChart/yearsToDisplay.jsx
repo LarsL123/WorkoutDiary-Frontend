@@ -5,15 +5,6 @@ const minWidth = "120px";
 const CurrentYears = ({ addYear, data, setData }) => {
   const [year, setYear] = useState(2020);
 
-  const addYear = () => {
-    addYear(year);
-  };
-
-  const removeYear = () =>
-    setData(prevState =>
-      prevState.filter(index => index.year !== thisYear.year)
-    );
-
   return (
     <React.Fragment>
       <hr style={{ position: "relative", top: "50px" }}></hr>
@@ -26,7 +17,11 @@ const CurrentYears = ({ addYear, data, setData }) => {
             className="list-group-item list-group-item-action btn-sm"
             style={{ textAlign: "center", color: thisYear.color, minWidth }}
             key={thisYear.year}
-            onClick={removeYear}
+            onClick={() =>
+              setData(prevState =>
+                prevState.filter(index => index.year !== thisYear.year)
+              )
+            }
           >
             {thisYear.year}
           </button>
@@ -36,7 +31,7 @@ const CurrentYears = ({ addYear, data, setData }) => {
           type="button"
           className="list-group-item list-group-item-action btn-sm"
           style={{ textAlign: "center", minWidth }}
-          onClick={addYear}
+          onClick={() => addYear(year)}
         >
           Add: &nbsp;
           <input
