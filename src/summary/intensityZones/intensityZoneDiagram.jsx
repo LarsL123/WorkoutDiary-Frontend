@@ -1,5 +1,4 @@
 //Based on: https://formidable.com/open-source/victory/gallery/custom-tooltip-labels/
-
 import React, { useState, useEffect } from "react";
 import { VictoryPie } from "victory";
 import ZoneLabel from "./label";

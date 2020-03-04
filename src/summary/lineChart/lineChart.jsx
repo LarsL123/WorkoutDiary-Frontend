@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import MinuteGraph from "./graph";
-import getChartLine from "./data";
 import CurrentYears from "./yearsToDisplay";
 import Selector from "../../common/components/select";
+import getChartLine from "./data";
+import getRandomColor from "../../common/utils/color"
 
 const timeRanges = [
   { name: "Full Year", obj: { from: "01.01.", to: "12.31." } },
@@ -74,10 +75,3 @@ const LineChart = () => {
 };
 
 export default LineChart;
-
-//Move to utils
-const getRandomColor = () => {
-  return (
-    "#" + Math.max(Math.floor(Math.random() * 0x1000000), 0x100000).toString(16)
-  );
-};

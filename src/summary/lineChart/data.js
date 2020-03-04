@@ -1,10 +1,7 @@
 import httpService from "../../common/services/httpService";
-import getWeekNumber from "../../common/utils/dateUtils";
+import getWeekNumber from "../../common/utils/date";
 
 export default async function getChartLine(fromDate, toDate) {
-  console.log(fromDate);
-  console.log(toDate);
-
   const { data } = await httpService.get(`/workouts/${fromDate}/${toDate}`);
 
   if (!data) return [];
@@ -24,9 +21,9 @@ export default async function getChartLine(fromDate, toDate) {
   });
 
   for (let i = 2; i < processedData.length; i++)
-    processedData[i].minutes += processedData[i - 1].minutes;
+    processedData[i].minutes += processedData[i - 1].minutes; //Sum up.
 
-  for (let i = 1; i < processedData.length; i++) processedData[i].minutes /= 60; //Convert to hours
+  for (let i = 1; i < processedData.length; i++) processedData[i].minutes /= 60; //Convert to hours.
 
   return processedData;
 }
