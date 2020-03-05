@@ -8,6 +8,10 @@ Call ajax on change:
 
 Open source data visualization:
     Victore libary, made for React: https://formidable.com/open-source/victory/gallery/
+    Sone fordeling: https://formidable.com/open-source/victory/gallery/custom-tooltip-labels
+    Ukesfordeling: https://formidable.com/open-source/victory/gallery/stacked-grouped-bars/
+    Minutter utover året: https://formidable.com/open-source/victory/gallery/brush-and-zoom
+    
 
 
 Docker:

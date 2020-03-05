@@ -22,12 +22,10 @@ function removeZeroes(workouts) {
     const zones = element.zones;
     if (!zones) return;
 
-    const values = Object.values(zones);
     for (let i = 1; i <= 5; i++) {
-      if (values[i] === 0) {
-        values[i] = " ";
+      if (zones[i] === 0) {
+        zones[i] = " ";
       }
     }
-    element.zones = values;
   });
 }

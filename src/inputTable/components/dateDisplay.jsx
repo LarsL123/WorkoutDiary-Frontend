@@ -7,7 +7,6 @@ const DateDisplay = ({ col }) => {
   const { data, setData } = useContext(WorkoutDataContext);
 
   const onChange = event => {
-    console.log("date: ", event.target.value);
     data.forEach(element => {
       if (element._id === col._id) {
         element.date = new Date(event.target.value).toISOString();

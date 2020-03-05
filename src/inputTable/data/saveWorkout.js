@@ -18,7 +18,6 @@ export default function updateWorkout(data) {
       5: parseInt(children[8].textContent) || 0
     }
   };
-  console.log("The data to be sendt:", dataOut);
 
   send(_id, dataOut);
 }
