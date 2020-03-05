@@ -6,8 +6,6 @@ export default function updateWorkout(data) {
   const _id = data.getAttribute("_id");
   const children = data.children;
 
-  console.log(children);
-
   const dataOut = {
     date: new Date(children[1].firstElementChild.firstElementChild.value),
     description: children[2].textContent,
@@ -20,7 +18,6 @@ export default function updateWorkout(data) {
       5: parseInt(children[8].textContent) || 0
     }
   };
-  console.log("The data to be sendt:", dataOut);
 
   send(_id, dataOut);
 }

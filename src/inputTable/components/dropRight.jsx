@@ -31,7 +31,7 @@ const DropRight = ({ col }) => {
       ></button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div className="dropdown-item" onClick={onNew}>
-          Insert New
+          Insert Here:
         </div>
         <div className="dropdown-divider"></div>
         <div className="dropdown-item" onClick={onDelete}>
