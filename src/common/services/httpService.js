@@ -2,7 +2,6 @@ import axios from "axios";
 //import logger from "./logService";
 //import { toast } from "react-toastify";
 
-if(!window.BACKEND_URI) throw new Error("a BACKEND_URI is not set");
 axios.defaults.baseURL = window.BACKEND_URI;
 
 axios.interceptors.response.use(null, error => {
