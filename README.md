@@ -1,15 +1,24 @@
 # WorkoutDiary-Frontend
+This is the source of my workout diary frontend react application. 
+This application can be pulled from docker hub, or feel free to clone and build it yourself.
 
-The front-end for my workout diary application.
+Example docker run command:
+docker run -d -p 80:80 -e BACKEND_URI="your backend uri" larsl123/workoutdiaryfrontend
 
-----Notes for development:
+##### Deployment:
 
-    Grid system:
+When deploying with docker, expose port 80. 
 
-The main gird feature may use the grid system from bootstrap --> https://getbootstrap.com/docs/4.3/layout/grid/
-I have not really looked into it but it may be restricted to 12 columns.
-That may be good but think we would need more.
-Also i dont know about the scaling if everythink is just scaled deown or if som of the columns dissapear.
+When running the docker image, the application expects the following enviroment variables:
+BACKEND_URI -The uri the application should connect to.
 
-Or this --> https://www.grapecity.com/blogs/build-a-react-data-grid-in-minutes ---> https://www.grapecity.com/blogs/wijmo-flexgrid-best-react-data-grid
-Are very simmelar to an excel grid. I hope i can make the grid pettier than this. Have to se if it can be stylized colored ect.
+##### Development:
+
+The project is set up so that every commit is tested with Circle Ci.
+All commits to the master branch must be tested on another branch before merging.
+Commits to master will trigger a build, which runs react-build and updates the docker image. 
+
+##### Links:
+
+Pre-built image: https://hub.docker.com/repository/docker/larsl123/workoutdiaryfrontend
+Circle-CI testing: https://circleci.com/gh/LarsL123/WorkoutDiary-Frontend
