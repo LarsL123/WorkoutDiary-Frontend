@@ -18,7 +18,7 @@ import "./App.css";
 
 //TODO copy structure from Vidly
 function App() {
-  console.log(window.BACKEND_URI);
+  console.log(window.BACKEND_URI || "There are no backend specified");
 
   const [user, setUser] = useState();
 
