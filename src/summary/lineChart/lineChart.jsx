@@ -11,7 +11,7 @@ const timeRanges = [
     name: "More time ranges comming soon...",
     obj: { from: "01.01.", to: "12.31." }
   }
-
+  //To add: 
   // { name: "Winter", obj: { from: "11.01.", to: "31.4." } },
   // { name: "Summer", obj: { from: "04.01.", to: "10.31." } }
 ];

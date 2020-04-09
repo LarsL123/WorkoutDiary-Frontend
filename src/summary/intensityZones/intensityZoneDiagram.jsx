@@ -16,8 +16,8 @@ const colorScale = [
 
 const ZoneDiagram = () => {
   const [data, setData] = useState([]);
-  const [fromDate, setFromDate] = useState(new Date("02.01.2020"));
-  const [toDate, setToDate] = useState(new Date("03.01.2020"));
+  const [fromDate, setFromDate] = useState(new Date("2020-01-01"));
+  const [toDate, setToDate] = useState(new Date());
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +25,7 @@ const ZoneDiagram = () => {
     }
     fetchData();
   }, [fromDate, toDate]);
+
 
   return (
     <React.Fragment>

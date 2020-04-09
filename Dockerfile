@@ -13,6 +13,7 @@ FROM nginx:1.16.0-alpine
 # alpine does not have bash or coreutils natively  (coreutils used in /nginx/shart.sh)
 RUN apk add bash
 RUN apk add coreutils 
+# copy static files
 COPY --from=build /app/build /usr/share/nginx/html
 # add config file
 RUN rm /etc/nginx/conf.d/default.conf
