@@ -2,7 +2,7 @@ import axios from "axios";
 //import logger from "./logService";
 //import { toast } from "react-toastify";
 
-axios.defaults.baseURL = window.BACKEND_URI;
+axios.defaults.baseURL = window.WORKOUT_BACKEND_URI;
 
 axios.interceptors.response.use(null, error => {
   const expecedError =

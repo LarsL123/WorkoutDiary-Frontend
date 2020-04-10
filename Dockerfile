@@ -10,7 +10,7 @@ RUN npm run build
 
 # production environment
 FROM nginx:1.16.0-alpine
-# alpine does not have bash or coreutils natively  (coreutils used in /nginx/shart.sh)
+# alpine does not have bash and coreutils natively  (coreutils used in /nginx/shart.sh)
 RUN apk add bash
 RUN apk add coreutils 
 # copy static files
