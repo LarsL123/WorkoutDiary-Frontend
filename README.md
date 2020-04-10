@@ -10,7 +10,9 @@ Example docker run command:
 When deploying with docker, expose port 80. 
 
 When running the docker image, the application expects the following enviroment variables:  
-BACKEND_URI - The uri the application should connect to.
+WORKOUT_BACKEND_URI - The uri the application should connect to.
+
+Other env-variables can be passed, but they need to have the "WORKOUT_" prefix to be added during startup.
 
 ##### Development:
 

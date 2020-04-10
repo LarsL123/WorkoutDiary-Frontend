@@ -1,6 +1,10 @@
-# clear config.js file
-echo "" | tee ./usr/share/nginx/html/config.js
-# enviroment variables to be included at runtime: 
-echo 'var BACKEND_URI = "'$BACKEND_URI'";'| tee ./usr/share/nginx/html/config.js
+#clear config.js file
+echo "//Runtime generated config:" > ./usr/share/nginx/html/config.js
+
+#Add all env-variables starting with "WORKOUT_" to config file.
+for var in "${!WORKOUT_@}"; do
+        echo 'var '$var' = "'${!var}'";' >> ./usr/share/nginx/html/config.js
+done
+
 # start nginx
-nginx -g 'daemon off;' 
+nginx -g 'daemon off;'  

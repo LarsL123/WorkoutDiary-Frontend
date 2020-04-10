@@ -16,9 +16,8 @@ import Logout from "./common/users/forms/logout";
 import Profile from "./common/nav/profile/profile"
 import "./App.css";
 
-//TODO copy structure from Vidly
 function App() {
-  console.log(window.BACKEND_URI || "There are no backend specified");
+  console.log(window.WORKOUT_BACKEND_URI || "There are no backend specified");
 
   const [user, setUser] = useState();
 
