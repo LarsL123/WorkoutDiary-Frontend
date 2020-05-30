@@ -17,7 +17,7 @@ import Profile from "./common/nav/profile/profile"
 import "./App.css";
 
 function App() {
-  console.log(window.WORKOUT_BACKEND_URI || "There are no backend specified");
+  console.log(`Connected to ${window.WORKOUT_BACKEND_URI || "There are no backend specified"}` );
 
   const [user, setUser] = useState();
 

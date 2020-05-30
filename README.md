@@ -3,7 +3,7 @@ This is the source of my workout diary frontend react application.
 This application can be pulled from docker hub, or feel free to clone and build it yourself.
 
 Example docker run command:
-    docker run -d -p 80:80 -e BACKEND_URI="your backend uri" larsl123/workoutdiaryfrontend
+    docker run -d -p 80:80 -e WORKOUT_BACKEND_URI="your backend uri" larsl123/workoutdiaryfrontend
 
 ##### Deployment:
 
