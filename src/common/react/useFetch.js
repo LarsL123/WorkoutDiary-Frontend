@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
-export default useFetch = (call, args) => {
-  const [data, updateData] = useState(undefined);
+const useFetch = (asyncCall, args, defaultValue = undefined) => {
+  const [data, updateData] = useState(defaultValue);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await call(...args);
-
+      const response = await asyncCall();
       updateData(response);
     }
     fetchData();
-  }, [call]);
+  }, [asyncCall]);
 
-  return data;
+  
+  return [data, updateData];
 };
+
+export default useFetch;

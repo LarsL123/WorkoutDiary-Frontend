@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import {
   Route,
   Switch,
   Redirect,
-  BrowserRouter as Router
+  BrowserRouter as Router,
 } from "react-router-dom";
-import auth from "./common/services/authService";
 import InputTable from "./inputTable/inputTable.jsx";
 import Summary from "./summary/summary";
 import NavBar from "./common/nav/navBar/navBar";
@@ -13,17 +12,25 @@ import NotFound from "./common/nav/notFound/notFound";
 import LoginForm from "./common/users/forms/loginForm";
 import RegisterForm from "./common/users/forms/registerForm";
 import Logout from "./common/users/forms/logout";
-import Profile from "./common/nav/profile/profile"
+import Profile from "./common/nav/profile/profile";
+import auth from "./common/services/authService"
 import "./App.css";
 
+
 function App() {
-  console.log(`Connected to ${window.WORKOUT_BACKEND_URI || "There are no backend specified"}` );
+  console.log(
+    `Connected to: ${
+      window.WORKOUT_BACKEND_URI || "There are no backend specified"
+    }`
+  );
 
   const [user, setUser] = useState();
 
   useEffect(() => {
     setUser(auth.getCurrentUser());
   }, []);
+
+  console.log(user);
 
   return (
     <Router>
@@ -37,7 +44,7 @@ function App() {
           <Route path="/summary" component={Summary} />
           <Route
             path="/input"
-            render={props => <InputTable {...props} user={user} />}
+            render={(props) => <InputTable {...props} user={user} />}
           />
           <Route path="/not-found" component={NotFound} />
           <Redirect exact from="/" to="/input" />

@@ -39,7 +39,7 @@ const InputTable = ({ user }) => {
       {
         key: "date",
         content: column => <DateDisplay col={column}></DateDisplay>,
-        label: "date"
+        label: "Date"
       },
       { path: "description", label: "Description" },
       { path: "type", label: "Activity" },
