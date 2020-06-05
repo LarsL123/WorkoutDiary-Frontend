@@ -12,7 +12,7 @@ import NotFound from "./common/nav/notFound/notFound";
 import LoginForm from "./common/users/forms/loginForm";
 import RegisterForm from "./common/users/forms/registerForm";
 import Logout from "./common/users/forms/logout";
-import Profile from "./common/nav/profile/profile";
+import Profile from "./profile/profile";
 import auth from "./common/services/authService"
 import "./App.css";
 
