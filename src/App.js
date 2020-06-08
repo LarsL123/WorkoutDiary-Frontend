@@ -17,7 +17,7 @@ import auth from "./common/services/authService"
 import "./App.css";
 
 
-function App() {
+const App = () =>  {
   console.log(
     `Connected to: ${
       window.WORKOUT_BACKEND_URI || "There are no backend specified"
@@ -53,6 +53,6 @@ function App() {
       </main>
     </Router>
   );
-}
+};
 
 export default App;
