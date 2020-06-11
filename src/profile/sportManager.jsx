@@ -9,20 +9,16 @@ const SportManager = () => {
     event.preventDefault();
     if (newSportName.length === 0) return;
 
-    const originalSports = sports;
+    setSports([
+      ...sports,
+      { name: newSportName, _id: `Temp for: ${newSportName}` },
+    ]);
 
-    setSports([...sports, { name: newSportName, _id: `Temp for: ${newSportName}` }]);
-
-    try {
-      await sportService.addSport(newSportName);
-    } catch (ex) {
-      setSports(originalSports);
-    }
+    await sportService.addSport(newSportName);
   };
 
   const onDelete = async (event) => {
     const idToDelete = event.target.getAttribute("sport");
-    const originalSports = sports;
 
     setSports(
       sports.filter((sport) => {
@@ -30,11 +26,7 @@ const SportManager = () => {
       })
     );
 
-    try {
-      await sportService.deleteSport(idToDelete);
-    } catch (ex) {
-      setSports(originalSports);
-    }
+    await sportService.deleteSport(idToDelete);
   };
 
   const onChange = (event) => {
@@ -42,45 +34,44 @@ const SportManager = () => {
   };
 
   useEffect(() => {
-      console.log(sports);
     (async () => {
-      const sportsFromServer = (await sportService.getSports()) || [];
-      console.log(sportsFromServer)
+      const sportsFromServer = await sportService.getSports();
       setSports(sportsFromServer);
     })();
   }, [sports]);
 
-  console.log("sports = " + sports);
-
-  if (!sports) return <h4>Loading sports...</h4>;
+  if (!sports) return <h4>Was not able to load sports</h4>;
 
   return (
-    <ul className="list-group">
-      {sports.map((sport) => (
-        <li className="list-group-item" key={sport._id}>
-          <div>
-            {sport.name}
-            <button
-              type="button"
-              className="btn-sm btn-danger float-right"
-              onClick={onDelete}
-              sport={sport._id}
-            >
-              Delete
-            </button>
-          </div>
-        </li>
-      ))}
+    <React.Fragment>
+      <h6>Edit your sports here: </h6>
+      <ul className="list-group">
+        {sports.map((sport) => (
+          <li className="list-group-item" key={sport._id}>
+            <div>
+              {sport.name}
+              <button
+                type="button"
+                className="btn-sm btn-danger float-right"
+                onClick={onDelete}
+                sport={sport._id}
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
 
-      <li className="list-group-item" key="Add item">
-        <form onSubmit={onSubmit}>
-          <input type="text" value={newSportName} onChange={onChange} />
-          <button type="submit" className="btn-sm btn-success float-right">
-            Add
-          </button>
-        </form>
-      </li>
-    </ul>
+        <li className="list-group-item" key="Add item">
+          <form onSubmit={onSubmit}>
+            <input type="text" value={newSportName} onChange={onChange} />
+            <button type="submit" className="btn-sm btn-success float-right">
+              Add
+            </button>
+          </form>
+        </li>
+      </ul>
+    </React.Fragment>
   );
 };
 

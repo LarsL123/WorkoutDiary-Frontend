@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Route,
   Switch,
@@ -13,24 +13,15 @@ import LoginForm from "./common/users/forms/loginForm";
 import RegisterForm from "./common/users/forms/registerForm";
 import Logout from "./common/users/forms/logout";
 import Profile from "./profile/profile";
-import auth from "./common/services/authService"
+import auth from "./common/services/authService";
 import "./App.css";
 
-
-const App = () =>  {
-  console.log(
-    `Connected to: ${
-      window.WORKOUT_BACKEND_URI || "There are no backend specified"
-    }`
-  );
-
+const App = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
     setUser(auth.getCurrentUser());
   }, []);
-
-  console.log(user);
 
   return (
     <Router>

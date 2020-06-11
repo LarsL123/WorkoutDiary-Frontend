@@ -14,11 +14,11 @@ const InputTable = ({ user }) => {
   const [columns, setColumns] = useState(null);
   const [data, setData] = useState([]);
 
-  const create = date => {
+  const create = (date) => {
     createWorkout(data, setData, date);
   };
 
-  const del = _id => {
+  const del = (_id) => {
     deleteWorkout(data, setData, _id);
   };
 
@@ -33,13 +33,13 @@ const InputTable = ({ user }) => {
     let cols = [
       {
         key: "delete",
-        content: columnData => <DropRight col={columnData}></DropRight>,
-        headerContent: column => <NewWorkout></NewWorkout>
+        content: (columnData) => <DropRight col={columnData}></DropRight>,
+        headerContent: () => <NewWorkout></NewWorkout>,
       },
       {
         key: "date",
-        content: column => <DateDisplay col={column}></DateDisplay>,
-        label: "Date"
+        content: (column) => <DateDisplay col={column}></DateDisplay>,
+        label: "Date",
       },
       { path: "description", label: "Description" },
       { path: "type", label: "Activity" },
@@ -47,7 +47,7 @@ const InputTable = ({ user }) => {
       { path: "zones.2", label: "2" },
       { path: "zones.3", label: "3" },
       { path: "zones.4", label: "4" },
-      { path: "zones.5", label: "5" }
+      { path: "zones.5", label: "5" },
     ];
 
     setColumns(cols);

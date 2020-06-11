@@ -9,7 +9,7 @@ export default function updateWorkout(data) {
   const dataOut = {
     date: new Date(children[1].firstElementChild.firstElementChild.value),
     description: children[2].textContent,
-    type: children[3].textContent,
+    sport: children[3].textContent, //ERROR - expects object id
     zones: {
       1: parseInt(children[4].textContent) || 0,
       2: parseInt(children[5].textContent) || 0,

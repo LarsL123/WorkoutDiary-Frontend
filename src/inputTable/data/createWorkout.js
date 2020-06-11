@@ -33,6 +33,6 @@ export default async function createWorkout(data, setData, date) {
 
     setData([...data]);
   } catch (error) {
-    console.log(error); //Implement logger/ expose user of error.
+    console.log(error); //TODO: Implement logger / expose user of error.
   }
 }
