@@ -6,10 +6,14 @@ export default function updateWorkout(data) {
   const _id = data.getAttribute("_id");
   const children = data.children;
 
+  console.log(children)
+
+  console.log(children[3].firstElementChild.firstElementChild);
+
   const dataOut = {
     date: new Date(children[1].firstElementChild.firstElementChild.value),
     description: children[2].textContent,
-    sport: children[3].textContent, //ERROR - expects object id
+    sport: children[3].firstElementChild.firstElementChild.value || undefined,
     zones: {
       1: parseInt(children[4].textContent) || 0,
       2: parseInt(children[5].textContent) || 0,
@@ -28,7 +32,7 @@ function send(_id, data) {
       console.log(response);
     },
     error => {
-      //Implement logger/ expose user of error.
+      //Implement logger/expose user of error.
       console.log(error.response);
     }
   );

@@ -2,6 +2,8 @@ import httpService from "./httpService";
 
 const apiEndpoint = "/sports";
 
+//TODO: Make this into a custom hook :-)
+
 let sports = null;
 
 async function getSports() {

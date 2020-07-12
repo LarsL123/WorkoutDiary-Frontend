@@ -45,7 +45,7 @@ const InputTable = ({ user }) => {
       },
       { path: "description", label: "Description" },
       {
-        key: "date",
+        key: "sport",
         content: (column) => <SportSelect column={column}></SportSelect>,
         label: "Sport",
       },
