@@ -1,44 +1,25 @@
-import React, { useState, useEffect } from "react";
-import sportService from "../common/services/sportsService";
+import React, { useState } from "react";
+import {useSports} from "../common/react/useSports";
 
 const SportManager = () => {
-  const [sports, setSports] = useState([]);
+  const [sports, addSport, deleteSport] = useSports();
   const [newSportName, setSportName] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
     if (newSportName.length === 0) return;
-
-    setSports([
-      ...sports,
-      { name: newSportName, _id: `Temp for: ${newSportName}` },
-    ]);
-
-    await sportService.addSport(newSportName);
+    await addSport(newSportName);
   };
 
   const onDelete = async (event) => {
     const idToDelete = event.target.getAttribute("sport");
-
-    setSports(
-      sports.filter((sport) => {
-        return sport._id !== idToDelete;
-      })
-    );
-
-    await sportService.deleteSport(idToDelete);
+    await deleteSport(idToDelete);
   };
 
   const onChange = (event) => {
     setSportName(event.target.value);
   };
 
-  useEffect(() => {
-    (async () => {
-      const sportsFromServer = await sportService.getSports();
-      setSports(sportsFromServer);
-    })();
-  }, [sports]);
 
   if (!sports) return <h4>Was not able to load sports</h4>;
 

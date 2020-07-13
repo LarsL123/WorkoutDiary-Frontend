@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
-import sportsService from "../../common/services/sportsService";
+import React, { useState } from "react";
+import { useSports } from "../../common/react/useSports";
 
 const SportSelect = ({ column }) => {
-  const [sports, setSports] = useState([]);
+  const [sports] = useSports();
   const [selectedSport, setSelectedSport] = useState(column.sport);
 
-  useEffect(() => { //Change to custom hook.
-    async function fetch() {
-      setSports(await sportsService.getSports());
-    }
-    fetch();
-  });
+  console.log(sports);
 
   return (
     <div contentEditable={false}>
@@ -32,7 +27,7 @@ const SportSelect = ({ column }) => {
             {sport.name}
           </option>
         ))}
-        <option key={"NoSport_"  + column._id} value={""}>
+        <option key={"NoSport_" + column._id} value={""}>
           No sport
         </option>
       </select>
