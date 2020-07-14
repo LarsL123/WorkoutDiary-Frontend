@@ -18,7 +18,7 @@ function format(workouts) {
 }
 
 function removeZeroes(workouts) {
-  workouts.forEach(element => {
+  workouts.forEach((element) => {
     const zones = element.zones;
     if (!zones) return;
 

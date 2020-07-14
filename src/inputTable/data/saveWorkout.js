@@ -15,8 +15,8 @@ export default function updateWorkout(data) {
       2: parseInt(children[5].textContent) || 0,
       3: parseInt(children[6].textContent) || 0,
       4: parseInt(children[7].textContent) || 0,
-      5: parseInt(children[8].textContent) || 0
-    }
+      5: parseInt(children[8].textContent) || 0,
+    },
   };
 
   send(_id, dataOut);
@@ -24,10 +24,10 @@ export default function updateWorkout(data) {
 
 function send(_id, data) {
   httpService.put(`${endpoint}/${_id}`, data).then(
-    response => {
+    (response) => {
       console.log(response);
     },
-    error => {
+    (error) => {
       //Implement logger/expose user of error.
       console.log(error.response);
     }

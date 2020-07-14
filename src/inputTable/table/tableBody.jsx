@@ -18,25 +18,25 @@ const createKey = (item, column) => {
 let changeTimer = false;
 let lastInstanceId = null;
 
-const onChange = function({ target }) {
+const onChange = function ({ target }) {
   const _id = target.parentElement.getAttribute("_id");
 
   if (changeTimer !== false && _id === lastInstanceId) {
     clearTimeout(changeTimer);
   }
   lastInstanceId = _id;
-  changeTimer = setTimeout(function() {
+  changeTimer = setTimeout(function () {
     updateWorkout(target.parentElement);
     changeTimer = false;
   }, 3000);
 };
 
-const TableBody = props => {
+const TableBody = (props) => {
   const { data, columns, widths } = props;
   return (
     <tbody>
       {columns
-        ? data.map(item => (
+        ? data.map((item) => (
             <tr key={item._id} _id={item._id}>
               {columns.map((column, index) => (
                 <td
