@@ -11,7 +11,6 @@ import createWorkout from "./data/createWorkout";
 import deleteWorkout from "./data/deleteWorkout";
 import { WorkoutDataContext } from "../common/react/workoutDataContext";
 
-
 const InputTable = ({ user }) => {
   const [columns, setColumns] = useState(null);
   const [data, setData] = useState([]);
@@ -43,17 +42,17 @@ const InputTable = ({ user }) => {
         content: (column) => <DateDisplay column={column}></DateDisplay>,
         label: "Date",
       },
-      { path: "description", label: "Description" },
+      { path: "description", label: "Description", contentEditable: true },
       {
         key: "sport",
         content: (column) => <SportSelect column={column}></SportSelect>,
         label: "Sport",
       },
-      { path: "zones.1", label: "1" },
-      { path: "zones.2", label: "2" },
-      { path: "zones.3", label: "3" },
-      { path: "zones.4", label: "4" },
-      { path: "zones.5", label: "5" },
+      { path: "zones.1", label: "1", contentEditable: true },
+      { path: "zones.2", label: "2", contentEditable: true },
+      { path: "zones.3", label: "3", contentEditable: true },
+      { path: "zones.4", label: "4", contentEditable: true },
+      { path: "zones.5", label: "5", contentEditable: true },
     ];
 
     setColumns(cols);
