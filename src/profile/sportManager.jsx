@@ -20,9 +20,6 @@ const SportManager = () => {
     setSportName(event.target.value);
   };
 
-
-  if (!sports) return <h4>Was not able to load sports</h4>;
-
   return (
     <React.Fragment>
       <h6>Edit your sports here: </h6>

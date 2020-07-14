@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { useSports } from "../../common/react/useSports";
 
+const NO_SPORT_VALUE = "";
+
 const SportSelect = ({ column }) => {
   const [sports] = useSports();
-  const [selectedSport, setSelectedSport] = useState(column.sport);
+  const [selectedSport, setSelectedSport] = useState(
+    column.sport ? column.sport._id : NO_SPORT_VALUE
+  );
 
-  console.log(sports);
+  let displayedSport = NO_SPORT_VALUE;
+  if (selectedSport)
+    if (sports.some((sport) => sport._id === selectedSport))
+      displayedSport = selectedSport;
 
   return (
     <div contentEditable={false}>
       <select
         className="custom-select"
         id="inputGroupSelect01"
-        value={selectedSport ? selectedSport._id : ""}
+        value={displayedSport}
         onChange={(event) => {
           setSelectedSport(event.target.value);
         }}
@@ -27,7 +34,8 @@ const SportSelect = ({ column }) => {
             {sport.name}
           </option>
         ))}
-        <option key={"NoSport_" + column._id} value={""}>
+
+        <option key={"NoSport_" + column._id} value={NO_SPORT_VALUE}>
           No sport
         </option>
       </select>

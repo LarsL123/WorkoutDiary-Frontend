@@ -6,10 +6,6 @@ export default function updateWorkout(data) {
   const _id = data.getAttribute("_id");
   const children = data.children;
 
-  console.log(children)
-
-  console.log(children[3].firstElementChild.firstElementChild);
-
   const dataOut = {
     date: new Date(children[1].firstElementChild.firstElementChild.value),
     description: children[2].textContent,

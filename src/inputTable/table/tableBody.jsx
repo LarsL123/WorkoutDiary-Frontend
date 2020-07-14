@@ -21,9 +21,6 @@ let lastInstanceId = null;
 const onChange = function({ target }) {
   const _id = target.parentElement.getAttribute("_id");
 
-  console.log("onCahnge from tableBody with target:");
-  console.log(target);
-
   if (changeTimer !== false && _id === lastInstanceId) {
     clearTimeout(changeTimer);
   }

@@ -3,41 +3,43 @@ import httpService from "../services/httpService";
 
 const apiEndpoint = "/sports";
 
-let cache;
+let cache; //Is there a hook so i can define it inside the function and still share a mutable value?
 
 export const useSports = () => {
   const [sports, setSports] = useState([]);
-  console.log(cache, sports);
 
   useEffect(() => {
     if (sports.length !== 0) return;
 
-    // let cancelRequest = false;
+    let cancelIfUnmouted = false;
 
     const fetchData = async () => {
       if (cache) {
         const data = await cache;
-        console.log("setting sports");
         return setSports(data);
       }
 
       cache = new Promise(async (resolve, reject) => {
+        let data;
+
         try {
           const response = await httpService.get(apiEndpoint);
-        //   if (cancelRequest) return;
-          setSports(response.data);
-          resolve(response.data);
+          data = response.data;
         } catch (error) {
-          console.log("Was not able to load sports: ");
-          console.log(error);
+          data = [];
+          console.error("Was not able to load sports: ", error); //TODO: Change to custom logger/expose to user.
         }
+
+        resolve(data);
+        if (cancelIfUnmouted) return;
+        setSports(data);
       });
     };
     fetchData();
 
-    // return function cleanup() {
-    //   cancelRequest = true;
-    // };
+    return function cleanup() {
+      cancelIfUnmouted = true;
+    };
   });
 
   const deleteSport = async (sportId) => {
