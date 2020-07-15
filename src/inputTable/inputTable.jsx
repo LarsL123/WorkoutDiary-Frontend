@@ -4,6 +4,7 @@ import Table from "./table/table";
 import DropRight from "./components/dropRight";
 import NewWorkout from "./components/newWorkout";
 import DateDisplay from "./components/dateDisplay";
+import SportSelect from "./components/sportSelect";
 //Data
 import getWorkouts from "./data/getWorkouts.js";
 import createWorkout from "./data/createWorkout";
@@ -14,11 +15,11 @@ const InputTable = ({ user }) => {
   const [columns, setColumns] = useState(null);
   const [data, setData] = useState([]);
 
-  const create = date => {
+  const create = (date) => {
     createWorkout(data, setData, date);
   };
 
-  const del = _id => {
+  const del = (_id) => {
     deleteWorkout(data, setData, _id);
   };
 
@@ -33,21 +34,25 @@ const InputTable = ({ user }) => {
     let cols = [
       {
         key: "delete",
-        content: columnData => <DropRight col={columnData}></DropRight>,
-        headerContent: column => <NewWorkout></NewWorkout>
+        content: (column) => <DropRight column={column}></DropRight>,
+        headerContent: () => <NewWorkout></NewWorkout>,
       },
       {
         key: "date",
-        content: column => <DateDisplay col={column}></DateDisplay>,
-        label: "date"
+        content: (column) => <DateDisplay column={column}></DateDisplay>,
+        label: "Date",
       },
-      { path: "description", label: "Description" },
-      { path: "type", label: "Activity" },
-      { path: "zones.1", label: "1" },
-      { path: "zones.2", label: "2" },
-      { path: "zones.3", label: "3" },
-      { path: "zones.4", label: "4" },
-      { path: "zones.5", label: "5" }
+      { path: "description", label: "Description", contentEditable: true },
+      {
+        key: "sport",
+        content: (column) => <SportSelect column={column}></SportSelect>,
+        label: "Sport",
+      },
+      { path: "zones.1", label: "1", contentEditable: true },
+      { path: "zones.2", label: "2", contentEditable: true },
+      { path: "zones.3", label: "3", contentEditable: true },
+      { path: "zones.4", label: "4", contentEditable: true },
+      { path: "zones.5", label: "5", contentEditable: true },
     ];
 
     setColumns(cols);

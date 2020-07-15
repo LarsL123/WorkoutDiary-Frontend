@@ -1,4 +1,3 @@
-//Need new name!
 import React, { useContext } from "react";
 import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 import pluss from "../../icons/add.png";

@@ -6,6 +6,6 @@ export function register(user) {
   return http.post(apiEndpoint, {
     email: user.email,
     password: user.password,
-    username: user.username
+    username: user.username,
   });
 }

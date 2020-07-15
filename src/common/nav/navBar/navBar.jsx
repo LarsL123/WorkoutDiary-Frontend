@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
-  if (user) user.name = "test";
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">
@@ -60,7 +59,7 @@ const NavBar = ({ user }) => {
 
         {user && (
           <NavLink className="navbar-text navbar-link" to="/profile">
-            {user.name}
+            {user.username}
           </NavLink>
         )}
       </div>

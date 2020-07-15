@@ -12,7 +12,6 @@ export default function deleteWorkout(data, setData, _id) {
     element = data[i];
     if (element._id === _id) {
       data.splice(i, 1);
-
       break;
     }
   }
@@ -20,10 +19,10 @@ export default function deleteWorkout(data, setData, _id) {
   setData([...data]);
 
   http.delete(`${apiEndpoint}/${_id}`).then(
-    response => {
+    (response) => {
       console.log(response);
     },
-    error => {
+    (error) => {
       data.splice(i, 0, element); //Add element back if deletion was unsuccessful.
       setData([...data]);
       console.log(error); //Implement logger/ expose user of error.

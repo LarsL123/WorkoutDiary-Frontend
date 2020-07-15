@@ -5,6 +5,12 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import {} from "react-router-dom";
 
+console.log(
+    `Connected to: ${
+      window.WORKOUT_BACKEND_URI || "There are no backend specified"
+    }`
+  );
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./table.module.css";
 
-const TableHeader = props => {
+const TableHeader = (props) => {
   const { columns } = props;
   return (
     <thead>
       <tr>
         {columns
-          ? columns.map(column => (
+          ? columns.map((column) => (
               <th
                 className={styles.th}
                 style={{
-                  top: -1
+                  top: -1,
                 }}
                 key={column.path || column.key}
                 scope="col"

@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import updateWorkout from "../data/saveWorkout";
 import { WorkoutDataContext } from "../../common/react/workoutDataContext";
 
-const DateDisplay = ({ col }) => {
-  const { date } = col;
+const DateDisplay = ({column }) => {
+  const { date } = column;
   const { data, setData } = useContext(WorkoutDataContext);
 
   const onChange = event => {
     data.forEach(element => {
-      if (element._id === col._id) {
+      if (element._id === column._id) {
         element.date = new Date(event.target.value).toISOString();
       }
     });
