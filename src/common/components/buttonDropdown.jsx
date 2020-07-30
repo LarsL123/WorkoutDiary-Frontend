@@ -1,5 +1,4 @@
 import React from "react";
-import { stringify } from "joi-browser";
 
 //Direction is eather dropdown, dropup, dropleft or dropright
 
