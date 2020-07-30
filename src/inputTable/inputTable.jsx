@@ -1,7 +1,7 @@
 //React and jsx
 import React, { useState, useEffect } from "react";
 import Table from "./table/table";
-import columns from "./table/tableColumns";
+import columns, { widths } from "./table/tableColumns";
 //Data
 import getWorkouts from "./data/getWorkouts.js";
 import createWorkout from "./data/createWorkout";
@@ -32,11 +32,7 @@ const InputTable = ({ user }) => {
     <WorkoutDataContext.Provider
       value={{ data, setData, createWorkout: create, deleteWorkout: del }}
     >
-      <Table
-        columns={columns}
-        data={data}
-        widths={["5%", "10%", "40%", "20%", "5%", "5%", "5%", "5%", "5%"]}
-      />
+      <Table columns={columns} data={data} widths={widths} />
     </WorkoutDataContext.Provider>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { stringify } from "joi-browser";
 
 //Direction is eather dropdown, dropup, dropleft or dropright
 
@@ -33,7 +34,7 @@ export default ButtonDropdown;
 
 export const DropdownItem = (props) => {
   return (
-    <div {...props} className={`dropdown-item ${props.className}`}>
+    <div {...props} className={combine("dropdown-item", props.className)}>
       {props.children}
     </div>
   );
@@ -41,8 +42,12 @@ export const DropdownItem = (props) => {
 
 export const DropdownDivider = (props) => {
   return (
-    <div {...props} className={`dropdown-divider ${props.className}`}>
+    <div {...props} className={combine("dropdown-divider", props.className)}>
       {props.children}
     </div>
   );
 };
+
+function combine(standardClass, className) {
+  return [standardClass, className].join(" ");
+}

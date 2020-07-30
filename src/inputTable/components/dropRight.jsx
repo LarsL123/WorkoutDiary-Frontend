@@ -23,7 +23,7 @@ const DropRight = ({ column }) => {
       <DropdownDivider />
 
       <DropdownItem onClick={onDelete}>
-        Delete <i className="far fa-trash-alt float-right"></i>
+        Delete <i className="far fa-trash-alt"></i>
       </DropdownItem>
     </ButtonDropdown>
   );
