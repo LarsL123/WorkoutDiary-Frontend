@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useSports} from "../common/react/useSports";
+import useSports from "../common/react/useSports";
 
 const SportManager = () => {
   const [sports, addSport, deleteSport] = useSports();
@@ -21,7 +21,7 @@ const SportManager = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <h6>Edit your sports here: </h6>
       <ul className="list-group">
         {sports.map((sport) => (
@@ -49,7 +49,7 @@ const SportManager = () => {
           </form>
         </li>
       </ul>
-    </React.Fragment>
+    </>
   );
 };
 

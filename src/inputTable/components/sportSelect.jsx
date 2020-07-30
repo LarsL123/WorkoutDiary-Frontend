@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSports } from "../../common/react/useSports";
+import useSports from "../../common/react/useSports";
 
 const NO_SPORT_VALUE = "";
 

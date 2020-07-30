@@ -12,7 +12,6 @@ const NewWorkout = () => {
   return (
     <button
       className="btn btn-info"
-      type="button"
       style={{ width: "40px", height: "40px", padding: "0" }}
       onClick={onClick}
     >

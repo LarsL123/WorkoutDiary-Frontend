@@ -5,7 +5,6 @@ import TableHeader from "./tableHeader";
 const Table = ({ columns, data, widths }) => {
   console.log("Rerendering table with: ", data); //Keeping track of unexpected renders during development.
   return (
-    //Make user option to have table or table-sm?
     <table className="table-sm table-bordered">
       <TableHeader columns={columns} />
       <TableBody data={data} columns={columns} widths={widths} />

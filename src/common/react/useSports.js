@@ -5,7 +5,7 @@ const apiEndpoint = "/sports";
 
 let cache; //Is there a hook so i can define it inside the function and still share a mutable value?
 
-export const useSports = () => {
+const useSports = () => {
   const [sports, setSports] = useState([]);
 
   useEffect(() => {
@@ -56,3 +56,5 @@ export const useSports = () => {
 
   return [sports, addSport, deleteSport];
 };
+
+export default useSports;
